@@ -48,6 +48,8 @@ apis:
         url: https://integrations.smartlook.com/docs/api-overview
       - type: OpenAPI
         url: https://integrations.smartlook.com/llms.txt
+      - type: OpenAPI
+        url: openapi/smartlook-rest-api-openapi.yml
 
 common:
   - type: Website
@@ -72,6 +74,12 @@ common:
     url: rate-limits/smartlook-rate-limits.yml
   - type: FinOps
     url: finops/smartlook-finops.yml
+  - type: Vocabulary
+    url: vocabulary/smartlook-vocabulary.yml
+  - type: JSONLDContext
+    url: json-ld/smartlook-context.jsonld
+  - type: BlogPosts
+    url: blogs/blogs.json
 
 maintainers:
   - FN: Kin Lane

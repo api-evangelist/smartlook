@@ -1,0 +1,10 @@
+{
+  "name": "Smartlook Blog",
+  "description": "Product updates, user research insights, and analytics best practices from the Smartlook team.",
+  "url": "https://www.smartlook.com/blog/",
+  "rss": null,
+  "rss_status": "not_found",
+  "rss_checked": "2026-06-13",
+  "rss_notes": "Probed /blog/feed/, /feed/, /blog/rss.xml — all redirect to homepage. No working RSS endpoint confirmed.",
+  "posts": []
+}

@@ -1,0 +1,115 @@
+vocabulary:
+  name: Smartlook API Vocabulary
+  description: Domain vocabulary for the Smartlook product analytics and session recording REST API
+  version: "1.0.0"
+  source: https://integrations.smartlook.com/docs/api-overview
+  terms:
+
+    - term: visitor
+      definition: >
+        A unique user tracked by Smartlook across sessions. Identified by an internal
+        visitor ID and optionally by a developer-assigned UID. Each visitor has properties,
+        a first-seen and last-seen timestamp, and counts for visits, sessions, and events.
+      type: resource
+
+    - term: session
+      definition: >
+        A single continuous interaction period between a visitor and a web or mobile
+        application. Contains identification details (browser, platform, country, device),
+        timing (startedAt, endedAt, duration), page URLs visited, referrer, landing page,
+        exit page, notes, and a dashboard URL for replay.
+      type: resource
+
+    - term: event
+      definition: >
+        A tracked user interaction or occurrence within a session, such as a click, URL
+        visit, error, rage_click, custom event, focus, or text entry. Events belong to
+        categories and can have properties.
+      type: resource
+
+    - term: funnel
+      definition: >
+        A sequence of events representing a user journey. Funnels track conversion rates
+        and visitor drop-off between steps. Each step corresponds to an event and includes
+        visitor counts and percentage from the previous step.
+      type: resource
+
+    - term: webhook
+      definition: >
+        An HTTP callback registered to receive Smartlook event notifications (alerts,
+        dashboards, heatmaps, issues, notes, shares). Webhooks have a type, URL, optional
+        secret, and enabled status.
+      type: resource
+
+    - term: mappingFile
+      definition: >
+        A symbol or ProGuard mapping file uploaded to de-obfuscate crash reports on mobile
+        platforms. Linked to a bundle ID, platform, and app version.
+      type: resource
+
+    - term: bearerToken
+      definition: >
+        An API authentication credential created in Smartlook Project Settings under the
+        REST API section. Included in the Authorization header as "Bearer <token>".
+        Tokens are project-specific and grant access to all project data.
+      type: concept
+
+    - term: region
+      definition: >
+        The data storage and processing region for a Smartlook project. Supported regions
+        are EU (api.eu.smartlook.cloud) and US (api.us.smartlook.cloud). Region must match
+        the project's configured data residency setting.
+      type: concept
+
+    - term: pagination
+      definition: >
+        Cursor-based pagination used by list endpoints. Uses "before" and "after" cursor
+        tokens returned in the pagination object, along with a "limit" parameter. The
+        _links object provides pre-built URLs for nextPage and previousPage.
+      type: concept
+
+    - term: categoryId
+      definition: >
+        An identifier grouping related events under a named category in Smartlook.
+        Used to filter event lists by category.
+      type: property
+
+    - term: conversionRate
+      definition: >
+        The percentage of visitors who completed all steps in a funnel, from the first
+        step to the last.
+      type: property
+
+    - term: occurrenceHistogram
+      definition: >
+        Time-series data showing event occurrence counts and unique visitor counts per
+        date interval for a specific event.
+      type: property
+
+    - term: dropOff
+      definition: >
+        Visitors who did not complete a specific funnel step. Retrievable via the
+        funnel visitors drop-off endpoint by step number and success flag.
+      type: concept
+
+    - term: dashboardURL
+      definition: >
+        A direct URL to the Smartlook dashboard for viewing a specific session replay.
+      type: property
+
+    - term: publicLink
+      definition: >
+        A shareable URL allowing unauthenticated access to view a specific session replay.
+      type: property
+
+    - term: projectUsage
+      definition: >
+        The total number of API requests made for the current project in the current
+        billing period, returned by the statistics endpoint.
+      type: property
+
+    - term: uid
+      definition: >
+        A developer-assigned user identifier attached to a visitor for cross-device and
+        cross-session tracking. Set via the Smartlook SDK's identify() method.
+      type: property
