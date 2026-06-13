@@ -1,0 +1,89 @@
+name: Smartlook Plans and Pricing
+description: >
+  Smartlook offers tiered subscription plans based on monthly session volume,
+  data retention, and feature access. A free plan is available for small teams
+  and personal projects. Paid plans unlock longer data retention, higher session
+  limits, additional analytics features, and REST API rate limit increases.
+  Smartlook reached End of Sale on May 31, 2026, following acquisition by Cisco,
+  and is transitioning toward Splunk Digital Experience Analytics. Existing customers
+  retain access through the contracted End-of-Life date.
+specificationVersion: "0.1"
+plans:
+  - name: Free
+    description: >
+      Entry-level free plan for individuals and small teams evaluating Smartlook.
+      Includes session recording, heatmaps, funnels, and event tracking with a
+      limited monthly session allowance and short data retention window.
+    price: 0
+    currency: USD
+    billingCycle: monthly
+    sessions: 3000
+    dataRetentionDays: 30
+    features:
+      - Session Recording
+      - Heatmaps
+      - Funnels
+      - Event Tracking
+      - 1 Project
+    apiRateLimitPerHour: 20
+
+  - name: Pro
+    description: >
+      Paid plan for growing product teams needing higher session volumes, longer
+      data retention, and expanded analytics capabilities. Includes full REST API
+      access at the standard rate limit.
+    price: 55
+    currency: USD
+    billingCycle: monthly
+    sessions: 10000
+    dataRetentionDays: 90
+    features:
+      - Session Recording
+      - Heatmaps
+      - Funnels
+      - Event Tracking
+      - Multiple Projects
+      - REST API Access
+      - Priority Support
+    apiRateLimitPerHour: 100
+
+  - name: Business
+    description: >
+      Enterprise-tier plan for larger organizations requiring advanced analytics,
+      higher session volumes, extended data retention, and enhanced team collaboration
+      features. REST API access included at standard paid plan rate.
+    price: 191
+    currency: USD
+    billingCycle: monthly
+    sessions: 100000
+    dataRetentionDays: 180
+    features:
+      - Session Recording
+      - Heatmaps
+      - Funnels
+      - Event Tracking
+      - Unlimited Projects
+      - REST API Access
+      - Advanced Filtering
+      - Team Collaboration
+      - Dedicated Support
+    apiRateLimitPerHour: 100
+
+  - name: REST API Add-On
+    description: >
+      Optional add-on available for any paid plan to increase the REST API rate
+      limit from 100 to 1,000 requests per hour for heavy data export workloads
+      or integration-intensive use cases.
+    price: null
+    currency: USD
+    billingCycle: monthly
+    addOn: true
+    features:
+      - Elevated REST API Rate Limits
+    apiRateLimitPerHour: 1000
+
+notes: >
+  Smartlook announced End of Sale effective May 31, 2026. The platform continues
+  operating for existing customers through the End-of-Life transition to Splunk
+  Observability Cloud Digital Experience Analytics. Pricing above reflects
+  historical published tiers as of early 2026.

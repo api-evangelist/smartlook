@@ -1,0 +1,70 @@
+name: Smartlook API Rate Limits
+description: >
+  Smartlook REST API rate limits are applied per project and vary by subscription
+  plan. Limits are enforced on a per-hour basis for each API endpoint. The Free
+  plan is heavily restricted, while paid plans allow more frequent requests.
+  An optional REST API add-on is available for paid customers who require
+  high-volume programmatic data access. API usage statistics are available via
+  the /api/statistics endpoint.
+specificationVersion: "0.1"
+rateLimits:
+  - name: Free Plan Rate Limit
+    description: >
+      Applies to all projects on the Smartlook Free plan. Allows up to 20
+      API requests per hour per endpoint. Intended for light exploration and
+      testing of the REST API.
+    plan: Free
+    requestsPerHour: 20
+    requestsPerMinute: null
+    scope: per-endpoint
+    enforcement: per-project
+
+  - name: Paid Plan Rate Limit
+    description: >
+      Applies to all projects on any Smartlook paid subscription (Pro, Business,
+      or equivalent). Allows up to 100 API requests per hour per endpoint.
+      Suitable for standard integration and data export workflows.
+    plan: Paid (Pro / Business)
+    requestsPerHour: 100
+    requestsPerMinute: null
+    scope: per-endpoint
+    enforcement: per-project
+
+  - name: REST API Add-On Rate Limit
+    description: >
+      Available as an optional add-on for any paid plan. Increases the rate
+      limit to 1,000 requests per hour per endpoint. Designed for high-volume
+      data export, bulk integrations, or BI pipeline workloads.
+    plan: Paid + REST API Add-On
+    requestsPerHour: 1000
+    requestsPerMinute: null
+    scope: per-endpoint
+    enforcement: per-project
+
+authentication:
+  type: Bearer Token
+  header: Authorization
+  format: "Bearer <token>"
+  tokenExpiry: >
+    Tokens become invalid after 90 days of inactivity. Only project owners
+    can create or revoke tokens via Project Settings > REST API.
+
+pagination:
+  type: cursor-based
+  parameters:
+    - name: before
+      description: Cursor for previous page
+    - name: after
+      description: Cursor for next page
+    - name: limit
+      description: Results per page
+
+regions:
+  - name: EU (default)
+    baseURL: https://api.eu.smartlook.cloud
+  - name: US
+    baseURL: https://api.us.smartlook.cloud
+
+usageStats:
+  endpoint: /api/statistics
+  description: Returns current API usage counts against your plan quota.

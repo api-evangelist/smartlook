@@ -1,0 +1,78 @@
+aid: smartlook
+name: Smartlook
+description: >
+  Smartlook is a product analytics and session recording platform that helps
+  businesses understand how users interact with their web and mobile applications.
+  The platform offers a REST API for programmatically accessing session replays,
+  heatmaps, funnel analysis, event analytics, and visitor behavior insights. Developers
+  can retrieve data across four primary resources—Visitors, Events, Funnels, and
+  Sessions—using bearer token authentication against regional API endpoints. Smartlook
+  supports multiple data regions and provides SDK integrations for web, iOS, Android,
+  and cross-platform frameworks including Cordova and React Native.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/smartlook/refs/heads/main/apis.yml
+created: "2026-06-13"
+modified: "2026-06-13"
+specificationVersion: "0.19"
+tags:
+  - Product Analytics
+  - Session Recording
+  - Heatmaps
+  - Funnels
+  - User Behavior
+  - Event Tracking
+  - Visitor Analytics
+  - Digital Experience
+
+apis:
+  - name: Smartlook REST API
+    description: >
+      The Smartlook REST API provides programmatic access to product analytics data
+      including visitors, events, funnels, and session recordings. It supports bearer
+      token authentication, cursor-based pagination, and regional endpoints to comply
+      with data residency requirements. Rate limits vary by subscription plan, ranging
+      from 20 requests per hour on the Free plan to 1,000 requests per hour with the
+      REST API add-on.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://integrations.smartlook.com/docs/api-overview
+    baseURL: https://api.eu.smartlook.cloud
+    tags:
+      - Analytics
+      - Sessions
+      - Events
+      - Funnels
+      - Visitors
+    properties:
+      - type: Documentation
+        url: https://integrations.smartlook.com/docs/api-overview
+      - type: OpenAPI
+        url: https://integrations.smartlook.com/llms.txt
+
+common:
+  - type: Website
+    url: https://www.smartlook.com/
+  - type: Documentation
+    url: https://help.smartlook.com/docs/rest-api
+  - type: GitHubOrg
+    url: https://github.com/smartlook
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/smartlook
+  - type: Blog
+    url: https://www.smartlook.com/blog/
+  - type: Pricing
+    url: https://www.smartlook.com/pricing/
+  - type: StatusPage
+    url: https://smartlook.statuspage.io/
+  - type: X
+    url: https://twitter.com/getsmartlook
+  - type: Plans
+    url: plans/smartlook-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/smartlook-rate-limits.yml
+  - type: FinOps
+    url: finops/smartlook-finops.yml
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

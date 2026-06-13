@@ -1,0 +1,90 @@
+name: Smartlook FinOps
+description: >
+  FinOps Framework 1.0 FOCUS-aligned cost and usage data for the Smartlook
+  product analytics and session recording platform. Smartlook pricing is
+  primarily session-volume based with plan tier gating on data retention and
+  API access. Cost drivers include monthly session volumes, number of projects,
+  data retention duration, and REST API add-on purchases. Organizations should
+  monitor session consumption against plan limits to avoid overages and optimize
+  spend relative to actual product analytics usage.
+specificationVersion: "1.0"
+provider: Smartlook
+providerURL: https://www.smartlook.com/
+currency: USD
+billingModel: subscription
+
+costDimensions:
+  - name: Session Volume
+    description: >
+      Primary cost driver. Plans are tiered by monthly session recording volume.
+      Sessions exceeding the plan limit may require upgrade. Monitor actual
+      session counts in the Smartlook dashboard.
+    unit: sessions/month
+    tiers:
+      - plan: Free
+        included: 3000
+        price: 0
+      - plan: Pro
+        included: 10000
+        price: 55
+      - plan: Business
+        included: 100000
+        price: 191
+
+  - name: Data Retention
+    description: >
+      Longer data retention requires higher plan tiers. Retaining historical
+      session and event data beyond the plan's window requires an upgrade.
+      Data retention impacts storage costs and regulatory compliance posture.
+    unit: days
+    tiers:
+      - plan: Free
+        retentionDays: 30
+      - plan: Pro
+        retentionDays: 90
+      - plan: Business
+        retentionDays: 180
+
+  - name: REST API Add-On
+    description: >
+      Optional paid add-on to increase API rate limits from 100 to 1,000 requests
+      per hour. Relevant for teams running high-frequency data pipelines, BI
+      integrations, or bulk data export workflows prior to platform EOL.
+    unit: add-on/month
+    price: null
+    notes: Contact Smartlook sales for add-on pricing.
+
+  - name: Number of Projects
+    description: >
+      Free plan is limited to one project. Paid plans allow multiple projects.
+      Organizations running multiple products or environments (staging/production)
+      should account for multi-project needs in plan selection.
+    unit: projects
+    tiers:
+      - plan: Free
+        included: 1
+      - plan: Pro
+        included: multiple
+      - plan: Business
+        included: unlimited
+
+optimization:
+  - recommendation: Monitor session consumption weekly to avoid unexpected plan upgrades.
+  - recommendation: Reduce session recording scope using Smartlook's sampling and exclusion rules to stay within plan limits.
+  - recommendation: Use the /api/statistics endpoint to programmatically monitor API usage against rate limits.
+  - recommendation: Evaluate data retention requirements carefully — shorter retention reduces effective plan cost.
+  - recommendation: >
+      Given Smartlook's End of Sale (May 31, 2026) and transition to Splunk
+      Digital Experience Analytics, organizations should plan migration budgets
+      and compare total cost of ownership against Splunk and alternative platforms.
+
+platformTransition:
+  status: End of Sale
+  endOfSaleDate: "2026-05-31"
+  endOfLifeDate: "2027-09-30"
+  successor: Splunk Observability Cloud - Digital Experience Analytics
+  notes: >
+    Smartlook was acquired by Cisco and is being integrated into Splunk
+    Observability Cloud. Organizations should model transition costs including
+    data migration, retraining, and new platform licensing when projecting
+    total FinOps exposure.
