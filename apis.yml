@@ -10,7 +10,7 @@ description: >
   supports multiple data regions and provides SDK integrations for web, iOS, Android,
   and cross-platform frameworks including Cordova and React Native.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/smartlook/refs/heads/main/apis.yml
 created: "2026-06-13"
 modified: "2026-06-13"
@@ -34,7 +34,7 @@ apis:
       with data residency requirements. Rate limits vary by subscription plan, ranging
       from 20 requests per hour on the Free plan to 1,000 requests per hour with the
       REST API add-on.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://integrations.smartlook.com/docs/api-overview
     baseURL: https://api.eu.smartlook.cloud
     tags:
