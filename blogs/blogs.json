@@ -4,16 +4,19 @@
   "url": "https://www.smartlook.com/blog/",
   "rss": null,
   "rss_status": "not_found",
-  "rss_checked": "2026-06-13",
-  "rss_notes": "Probed /blog/feed/, /feed/, /blog/rss.xml \u2014 all redirect to homepage. No working RSS endpoint confirmed.",
+  "rss_checked": "2026-06-21",
+  "rss_notes": "Probed /blog/feed/, /blog/rss/, /blog/feed.xml — none return XML. The /blog/ page is now a single Cisco/Splunk acquisition-transition announcement with no list of blog posts to scrape.",
   "posts": [],
   "repo": "smartlook",
   "feeds": [
     {
-      "source": "https://www.linkedin.com/company/smartlook",
-      "error": "HTTPError"
+      "source": "https://www.smartlook.com/blog/",
+      "feed_url": "",
+      "saved": 0,
+      "method": "agent-scrape"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T13:10:29Z",
+  "agent_pulled": "2026-06-27"
 }
