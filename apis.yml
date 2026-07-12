@@ -52,6 +52,10 @@ apis:
         url: openapi/smartlook-rest-api-openapi.yml
 
 common:
+  - type: DomainSecurity
+    url: security/smartlook-domain-security.yml
+  - type: Authentication
+    url: authentication/smartlook-authentication.yml
   - type: Website
     url: https://www.smartlook.com/
   - type: Documentation
