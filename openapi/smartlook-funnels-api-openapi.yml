@@ -1,0 +1,242 @@
+openapi: 3.0.0
+info:
+  title: Smartlook REST Events Funnels API
+  version: 1.0.1
+  description: 'The Smartlook REST API provides programmatic access to product analytics data including visitors, events, funnels, and session recordings. It supports bearer token authentication, cursor-based pagination, and regional endpoints to comply with data residency requirements.
+
+    '
+  contact:
+    url: https://integrations.smartlook.com/docs/api-overview
+  x-api-id: smartlook-rest-api
+servers:
+- url: https://api.eu.smartlook.cloud/
+  description: REST API - EU region
+- url: https://api.us.smartlook.cloud/
+  description: REST API - US region
+security:
+- bearerAuth: []
+tags:
+- name: Funnels
+  description: Manage and query funnel analysis data
+paths:
+  /api/v1/funnels:
+    get:
+      operationId: getFunnelsList
+      summary: Get funnels list
+      tags:
+      - Funnels
+      parameters:
+      - in: query
+        name: before
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: after
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: limit
+        schema:
+          type: number
+        required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: number
+                  funnels:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        events:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              name:
+                                type: string
+                              _links:
+                                type: object
+                                properties:
+                                  event:
+                                    type: string
+                                additionalProperties: false
+                            additionalProperties: false
+                        _links:
+                          type: object
+                          properties:
+                            funnel:
+                              type: string
+                          additionalProperties: false
+                      additionalProperties: false
+                  pagination:
+                    type: object
+                    properties:
+                      before:
+                        type: string
+                      after:
+                        type: string
+                    additionalProperties: false
+                  _links:
+                    type: object
+                    properties:
+                      nextPage:
+                        type: string
+                      previousPage:
+                        type: string
+                    additionalProperties: false
+                additionalProperties: false
+  /api/v1/funnels/{funnelId}:
+    get:
+      operationId: getFunnelDetail
+      summary: Get funnel details
+      tags:
+      - Funnels
+      parameters:
+      - in: path
+        name: funnelId
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: dateFrom
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: dateTo
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: waitForFinish
+        schema:
+          type: boolean
+        required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  computation:
+                    type: object
+                    properties:
+                      isFinished:
+                        type: boolean
+                      finishedProgress:
+                        type: number
+                      nextAttemptDelay:
+                        type: number
+                    additionalProperties: false
+                  funnel:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      createdAt:
+                        type: string
+                      updatedAt:
+                        type: string
+                      conversionRate:
+                        type: number
+                      steps:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            visitorsCount:
+                              type: number
+                            event:
+                              type: object
+                              properties:
+                                step:
+                                  type: number
+                                id:
+                                  type: string
+                                eventName:
+                                  type: string
+                                _links:
+                                  type: object
+                                  properties:
+                                    event:
+                                      type: string
+                                  additionalProperties: false
+                              additionalProperties: false
+                            percentFromPreviousStep:
+                              type: number
+                          additionalProperties: false
+                    additionalProperties: false
+                additionalProperties: false
+  /api/v1/funnels/{funnelId}/visitors/drop-off:
+    get:
+      operationId: getFunnelVisitorsDropOffList
+      summary: Get funnel visitors drop-off list
+      tags:
+      - Funnels
+      parameters:
+      - in: path
+        name: funnelId
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: dateFrom
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: dateTo
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: step
+        schema:
+          type: number
+        required: true
+      - in: query
+        name: success
+        schema:
+          type: boolean
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalVisitorsCount:
+                    type: number
+                  visitors:
+                    type: array
+                    items:
+                      type: string
+                additionalProperties: false
+                required:
+                - totalVisitorsCount
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

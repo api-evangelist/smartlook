@@ -1,0 +1,71 @@
+openapi: 3.0.0
+info:
+  title: Smartlook REST Events System API
+  version: 1.0.1
+  description: 'The Smartlook REST API provides programmatic access to product analytics data including visitors, events, funnels, and session recordings. It supports bearer token authentication, cursor-based pagination, and regional endpoints to comply with data residency requirements.
+
+    '
+  contact:
+    url: https://integrations.smartlook.com/docs/api-overview
+  x-api-id: smartlook-rest-api
+servers:
+- url: https://api.eu.smartlook.cloud/
+  description: REST API - EU region
+- url: https://api.us.smartlook.cloud/
+  description: REST API - US region
+security:
+- bearerAuth: []
+tags:
+- name: System
+  description: API stats and project information
+paths:
+  /api/v1/statistics:
+    get:
+      operationId: getApiStats
+      summary: Get API stats
+      tags:
+      - System
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  projectUsage:
+                    type: number
+                  endpointsUsage:
+                    type: object
+                    additionalProperties: true
+                additionalProperties: false
+  /api/v1/me:
+    get:
+      operationId: getMe
+      summary: Get info about project
+      tags:
+      - System
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organizationId:
+                    type: string
+                  organizationName:
+                    type: string
+                  projectId:
+                    type: string
+                  projectName:
+                    type: string
+                additionalProperties: false
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

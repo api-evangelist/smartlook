@@ -1,0 +1,72 @@
+openapi: 3.0.0
+info:
+  title: Smartlook REST Events mappingFiles API
+  version: 1.0.1
+  description: 'The Smartlook REST API provides programmatic access to product analytics data including visitors, events, funnels, and session recordings. It supports bearer token authentication, cursor-based pagination, and regional endpoints to comply with data residency requirements.
+
+    '
+  contact:
+    url: https://integrations.smartlook.com/docs/api-overview
+  x-api-id: smartlook-rest-api
+servers:
+- url: https://api.eu.smartlook.cloud/
+  description: REST API - EU region
+- url: https://api.us.smartlook.cloud/
+  description: REST API - US region
+security:
+- bearerAuth: []
+tags:
+- name: mappingFiles
+  description: Upload mapping files for crash reports
+paths:
+  /api/v1/bundles/{bundleId}/platforms/{platform}/releases/{appVersion}/mapping-files:
+    post:
+      operationId: uploadMappingFile
+      summary: Upload mapping files for crash reports
+      tags:
+      - mappingFiles
+      parameters:
+      - in: path
+        name: bundleId
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: platform
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: appVersion
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: force
+        schema:
+          type: string
+        required: false
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  oid:
+                    type: string
+                  createdAt:
+                    type: string
+                  state:
+                    type: string
+                additionalProperties: false
+                required:
+                - oid
+                - createdAt
+                - state
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

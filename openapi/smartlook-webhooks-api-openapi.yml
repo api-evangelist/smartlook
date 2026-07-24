@@ -1,0 +1,184 @@
+openapi: 3.0.0
+info:
+  title: Smartlook REST Events Webhooks API
+  version: 1.0.1
+  description: 'The Smartlook REST API provides programmatic access to product analytics data including visitors, events, funnels, and session recordings. It supports bearer token authentication, cursor-based pagination, and regional endpoints to comply with data residency requirements.
+
+    '
+  contact:
+    url: https://integrations.smartlook.com/docs/api-overview
+  x-api-id: smartlook-rest-api
+servers:
+- url: https://api.eu.smartlook.cloud/
+  description: REST API - EU region
+- url: https://api.us.smartlook.cloud/
+  description: REST API - US region
+security:
+- bearerAuth: []
+tags:
+- name: Webhooks
+  description: Create and manage webhooks
+paths:
+  /api/v1/webhooks:
+    get:
+      operationId: getWebhooks
+      summary: Get webhooks
+      tags:
+      - Webhooks
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    url:
+                      type: string
+                    type:
+                      type: string
+                    enabled:
+                      type: boolean
+                  additionalProperties: false
+                  required:
+                  - id
+                  - url
+                  - type
+                  - enabled
+    post:
+      operationId: createWebhook
+      summary: Create webhook
+      tags:
+      - Webhooks
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                url:
+                  type: string
+                source:
+                  type: string
+                secret:
+                  type: string
+              additionalProperties: false
+              required:
+              - type
+              - url
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                additionalProperties: false
+  /api/v1/webhooks/{webhookOid}:
+    get:
+      operationId: getWebhook
+      summary: Get webhook
+      tags:
+      - Webhooks
+      parameters:
+      - in: path
+        name: webhookOid
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  url:
+                    type: string
+                  type:
+                    type: string
+                  enabled:
+                    type: boolean
+                  lastResponse:
+                    type: string
+                  lastResponseAt:
+                    type: string
+                additionalProperties: false
+                required:
+                - id
+                - url
+                - type
+                - enabled
+    patch:
+      operationId: updateWebhook
+      summary: Update webhook
+      tags:
+      - Webhooks
+      parameters:
+      - in: path
+        name: webhookOid
+        schema:
+          type: string
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                secret:
+                  type: string
+                enabled:
+                  type: boolean
+              additionalProperties: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                additionalProperties: false
+    delete:
+      operationId: deleteWebhook
+      summary: Delete webhook
+      tags:
+      - Webhooks
+      parameters:
+      - in: path
+        name: webhookOid
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,266 @@
+openapi: 3.0.0
+info:
+  title: Smartlook REST Events API
+  version: 1.0.1
+  description: 'The Smartlook REST API provides programmatic access to product analytics data including visitors, events, funnels, and session recordings. It supports bearer token authentication, cursor-based pagination, and regional endpoints to comply with data residency requirements.
+
+    '
+  contact:
+    url: https://integrations.smartlook.com/docs/api-overview
+  x-api-id: smartlook-rest-api
+servers:
+- url: https://api.eu.smartlook.cloud/
+  description: REST API - EU region
+- url: https://api.us.smartlook.cloud/
+  description: REST API - US region
+security:
+- bearerAuth: []
+tags:
+- name: Events
+  description: Manage and query analytics events
+paths:
+  /api/v1/events:
+    get:
+      operationId: getEventsList
+      summary: Get events list
+      tags:
+      - Events
+      parameters:
+      - in: query
+        name: before
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: after
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: limit
+        schema:
+          type: number
+        required: false
+      - in: query
+        name: categoryId
+        schema:
+          type: string
+        required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  events:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        categoryId:
+                          type: string
+                        categoryName:
+                          type: string
+                        _links:
+                          type: object
+                          properties:
+                            eventVisitors:
+                              type: string
+                            event:
+                              type: string
+                          additionalProperties: false
+                      additionalProperties: false
+                  totalCount:
+                    type: number
+                  pagination:
+                    type: object
+                    properties:
+                      before:
+                        type: string
+                      after:
+                        type: string
+                    additionalProperties: false
+                  _links:
+                    type: object
+                    properties:
+                      nextPage:
+                        type: string
+                      previousPage:
+                        type: string
+                    additionalProperties: false
+                additionalProperties: false
+  /api/v1/events/{eventId}:
+    get:
+      operationId: getEventDetail
+      summary: Get event details
+      tags:
+      - Events
+      parameters:
+      - in: path
+        name: eventId
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: dateFrom
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: dateTo
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: occurrenceHistogramInterval
+        schema:
+          type: string
+        required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  event:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      categoryId:
+                        type: string
+                      categoryName:
+                        type: string
+                      totalOccurrence:
+                        type: number
+                      uniqueVisitors:
+                        type: number
+                      newVisitors:
+                        type: number
+                      averageOccurrencePerVisitor:
+                        type: number
+                      occurrenceHistogram:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            date:
+                              type: string
+                            occurrenceCount:
+                              type: number
+                            uniqueVisitorsCount:
+                              type: number
+                          additionalProperties: false
+                      _links:
+                        type: object
+                        properties:
+                          eventVisitors:
+                            type: string
+                        additionalProperties: false
+                    additionalProperties: false
+                additionalProperties: false
+    delete:
+      operationId: deleteEvent
+      summary: Delete event
+      tags:
+      - Events
+      parameters:
+      - in: path
+        name: eventOid
+        schema:
+          type: string
+        required: true
+      responses:
+        '204':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /api/v1/events/{eventId}/visitors:
+    get:
+      operationId: getEventVisitors
+      summary: Get event visitors
+      tags:
+      - Events
+      parameters:
+      - in: path
+        name: eventId
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: dateFrom
+        schema:
+          type: string
+        required: true
+      - in: query
+        name: dateTo
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  visitors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        identification:
+                          type: object
+                          properties:
+                            uid:
+                              type: string
+                            properties:
+                              type: array
+                              items:
+                                $ref: '#/components/schemas/AnyValue'
+                          additionalProperties: false
+                        firstSeen:
+                          type: string
+                        lastSeen:
+                          type: string
+                        numberOfVisits:
+                          type: number
+                        eventMatchedCount:
+                          type: number
+                        _links:
+                          type: object
+                          properties:
+                            visitor:
+                              type: string
+                            visitorSessions:
+                              type: string
+                            visitorEvents:
+                              type: string
+                          additionalProperties: false
+                      additionalProperties: false
+                additionalProperties: false
+components:
+  schemas:
+    AnyValue:
+      description: Can be any value - string, number, boolean, array or object.
+      nullable: true
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

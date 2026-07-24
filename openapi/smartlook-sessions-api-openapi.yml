@@ -1,0 +1,256 @@
+openapi: 3.0.0
+info:
+  title: Smartlook REST Events Sessions API
+  version: 1.0.1
+  description: 'The Smartlook REST API provides programmatic access to product analytics data including visitors, events, funnels, and session recordings. It supports bearer token authentication, cursor-based pagination, and regional endpoints to comply with data residency requirements.
+
+    '
+  contact:
+    url: https://integrations.smartlook.com/docs/api-overview
+  x-api-id: smartlook-rest-api
+servers:
+- url: https://api.eu.smartlook.cloud/
+  description: REST API - EU region
+- url: https://api.us.smartlook.cloud/
+  description: REST API - US region
+security:
+- bearerAuth: []
+tags:
+- name: Sessions
+  description: Search and retrieve session recordings
+paths:
+  /api/v1/sessions/search:
+    post:
+      operationId: searchSessions
+      summary: Search sessions
+      tags:
+      - Sessions
+      parameters:
+      - in: query
+        name: after
+        schema:
+          type: string
+        required: false
+      - in: query
+        name: limit
+        schema:
+          type: number
+        required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filters:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      operator:
+                        type: string
+                      value:
+                        oneOf:
+                        - type: number
+                        - type: string
+                        - type: array
+                          items:
+                            type: string
+                    additionalProperties: false
+                    required:
+                    - name
+                    - operator
+                    - value
+                sort:
+                  type: object
+                  properties:
+                    timeStart:
+                      type: string
+                  additionalProperties: false
+              additionalProperties: false
+              required:
+              - filters
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalSessionsCount:
+                    type: number
+                  sessions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Session'
+                  pagination:
+                    type: object
+                    properties:
+                      after:
+                        type: string
+                    additionalProperties: false
+                  _links:
+                    type: object
+                    properties:
+                      nextPage:
+                        type: string
+                    additionalProperties: false
+                additionalProperties: false
+  /api/v1/sessions/{sessionId}:
+    get:
+      operationId: getSessionDetail
+      summary: Get session details
+      tags:
+      - Sessions
+      parameters:
+      - in: path
+        name: sessionId
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+  /api/v1/sessions/{sessionId}/public-link:
+    get:
+      operationId: getPublicSession
+      summary: Get session public link
+      tags:
+      - Sessions
+      parameters:
+      - in: path
+        name: sessionId
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  publicLink:
+                    type: string
+                additionalProperties: false
+components:
+  schemas:
+    Session:
+      type: object
+      properties:
+        id:
+          type: string
+        visitorId:
+          type: string
+        identification:
+          type: object
+          properties:
+            uid:
+              type: string
+            properties:
+              $ref: '#/components/schemas/AnyValue'
+            visitorIp:
+              type: string
+            browser:
+              type: object
+              properties:
+                name:
+                  type: string
+                code:
+                  type: string
+                userAgent:
+                  type: string
+              additionalProperties: false
+            platform:
+              type: object
+              properties:
+                name:
+                  type: string
+                operatingSystem:
+                  type: string
+                code:
+                  type: string
+              additionalProperties: false
+            country:
+              type: object
+              properties:
+                name:
+                  type: string
+                code:
+                  type: string
+                region:
+                  type: string
+                city:
+                  type: string
+              additionalProperties: false
+            device:
+              type: object
+              properties:
+                type:
+                  type: string
+                orientation:
+                  type: string
+                width:
+                  type: number
+                height:
+                  type: number
+              additionalProperties: false
+          additionalProperties: false
+        duration:
+          type: number
+        startedAt:
+          type: string
+        endedAt:
+          type: string
+        referrer:
+          type: string
+        landingPage:
+          type: string
+        exitPage:
+          type: string
+        pageUrl:
+          type: array
+          items:
+            type: string
+        notes:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              time:
+                type: number
+              text:
+                type: string
+            additionalProperties: false
+        domain:
+          type: string
+        protocol:
+          type: string
+        dashboardURL:
+          type: string
+        _links:
+          type: object
+          properties:
+            visitor:
+              type: string
+            sessionEvents:
+              type: string
+          additionalProperties: false
+      additionalProperties: false
+    AnyValue:
+      description: Can be any value - string, number, boolean, array or object.
+      nullable: true
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
