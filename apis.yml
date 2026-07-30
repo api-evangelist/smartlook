@@ -10,7 +10,20 @@ description: >
   supports multiple data regions and provides SDK integrations for web, iOS, Android,
   and cross-platform frameworks including Cordova and React Native.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/smartlook.png
 url: https://raw.githubusercontent.com/api-evangelist/smartlook/refs/heads/main/apis.yml
 created: "2026-06-13"
 modified: "2026-06-13"
@@ -26,31 +39,90 @@ tags:
   - Digital Experience
 
 apis:
-  - name: Smartlook REST API
-    description: >
-      The Smartlook REST API provides programmatic access to product analytics data
-      including visitors, events, funnels, and session recordings. It supports bearer
-      token authentication, cursor-based pagination, and regional endpoints to comply
-      with data residency requirements. Rate limits vary by subscription plan, ranging
-      from 20 requests per hour on the Free plan to 1,000 requests per hour with the
-      REST API add-on.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://integrations.smartlook.com/docs/api-overview
-    baseURL: https://api.eu.smartlook.cloud
-    tags:
-      - Analytics
-      - Sessions
-      - Events
-      - Funnels
-      - Visitors
-    properties:
-      - type: Documentation
-        url: https://integrations.smartlook.com/docs/api-overview
-      - type: OpenAPI
-        url: https://integrations.smartlook.com/llms.txt
-      - type: OpenAPI
-        url: openapi/smartlook-rest-api-openapi.yml
-
+- aid: smartlook:smartlook-events-api
+  name: Smartlook Events API
+  description: Manage and query analytics events
+  humanURL: https://integrations.smartlook.com/docs/api-overview
+  baseURL: https://api.eu.smartlook.cloud
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/smartlook-events-api-openapi.yml
+  - type: Documentation
+    url: https://integrations.smartlook.com/docs/api-overview
+- aid: smartlook:smartlook-funnels-api
+  name: Smartlook Funnels API
+  description: Manage and query funnel analysis data
+  humanURL: https://integrations.smartlook.com/docs/api-overview
+  baseURL: https://api.eu.smartlook.cloud
+  tags:
+  - Funnels
+  properties:
+  - type: OpenAPI
+    url: openapi/smartlook-funnels-api-openapi.yml
+  - type: Documentation
+    url: https://integrations.smartlook.com/docs/api-overview
+- aid: smartlook:smartlook-mappingfiles-api
+  name: Smartlook mappingFiles API
+  description: Upload mapping files for crash reports
+  humanURL: https://integrations.smartlook.com/docs/api-overview
+  baseURL: https://api.eu.smartlook.cloud
+  tags:
+  - mappingFiles
+  properties:
+  - type: OpenAPI
+    url: openapi/smartlook-mappingfiles-api-openapi.yml
+  - type: Documentation
+    url: https://integrations.smartlook.com/docs/api-overview
+- aid: smartlook:smartlook-sessions-api
+  name: Smartlook Sessions API
+  description: Search and retrieve session recordings
+  humanURL: https://integrations.smartlook.com/docs/api-overview
+  baseURL: https://api.eu.smartlook.cloud
+  tags:
+  - Sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/smartlook-sessions-api-openapi.yml
+  - type: Documentation
+    url: https://integrations.smartlook.com/docs/api-overview
+- aid: smartlook:smartlook-system-api
+  name: Smartlook System API
+  description: API stats and project information
+  humanURL: https://integrations.smartlook.com/docs/api-overview
+  baseURL: https://api.eu.smartlook.cloud
+  tags:
+  - System
+  properties:
+  - type: OpenAPI
+    url: openapi/smartlook-system-api-openapi.yml
+  - type: Documentation
+    url: https://integrations.smartlook.com/docs/api-overview
+- aid: smartlook:smartlook-visitors-api
+  name: Smartlook Visitors API
+  description: Manage and query visitor data
+  humanURL: https://integrations.smartlook.com/docs/api-overview
+  baseURL: https://api.eu.smartlook.cloud
+  tags:
+  - Visitors
+  properties:
+  - type: OpenAPI
+    url: openapi/smartlook-visitors-api-openapi.yml
+  - type: Documentation
+    url: https://integrations.smartlook.com/docs/api-overview
+- aid: smartlook:smartlook-webhooks-api
+  name: Smartlook Webhooks API
+  description: Create and manage webhooks
+  humanURL: https://integrations.smartlook.com/docs/api-overview
+  baseURL: https://api.eu.smartlook.cloud
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/smartlook-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://integrations.smartlook.com/docs/api-overview
 common:
   - type: AgenticAccess
     url: agentic-access/smartlook-agentic-access.yml
