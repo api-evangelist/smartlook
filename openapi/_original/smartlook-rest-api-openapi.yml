@@ -1,0 +1,1365 @@
+openapi: 3.0.0
+info:
+  title: Smartlook REST API
+  version: 1.0.1
+  description: >
+    The Smartlook REST API provides programmatic access to product analytics data
+    including visitors, events, funnels, and session recordings. It supports bearer
+    token authentication, cursor-based pagination, and regional endpoints to comply
+    with data residency requirements.
+  contact:
+    url: https://integrations.smartlook.com/docs/api-overview
+  x-api-id: smartlook-rest-api
+servers:
+  - url: https://api.eu.smartlook.cloud/
+    description: REST API - EU region
+  - url: https://api.us.smartlook.cloud/
+    description: REST API - US region
+security:
+  - bearerAuth: []
+tags:
+  - name: Events
+    description: Manage and query analytics events
+  - name: Funnels
+    description: Manage and query funnel analysis data
+  - name: Visitors
+    description: Manage and query visitor data
+  - name: Sessions
+    description: Search and retrieve session recordings
+  - name: System
+    description: API stats and project information
+  - name: Webhooks
+    description: Create and manage webhooks
+  - name: mappingFiles
+    description: Upload mapping files for crash reports
+paths:
+  /api/v1/events:
+    get:
+      operationId: getEventsList
+      summary: Get events list
+      tags:
+        - Events
+      parameters:
+        - in: query
+          name: before
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: after
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: limit
+          schema:
+            type: number
+          required: false
+        - in: query
+          name: categoryId
+          schema:
+            type: string
+          required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  events:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        categoryId:
+                          type: string
+                        categoryName:
+                          type: string
+                        _links:
+                          type: object
+                          properties:
+                            eventVisitors:
+                              type: string
+                            event:
+                              type: string
+                          additionalProperties: false
+                      additionalProperties: false
+                  totalCount:
+                    type: number
+                  pagination:
+                    type: object
+                    properties:
+                      before:
+                        type: string
+                      after:
+                        type: string
+                    additionalProperties: false
+                  _links:
+                    type: object
+                    properties:
+                      nextPage:
+                        type: string
+                      previousPage:
+                        type: string
+                    additionalProperties: false
+                additionalProperties: false
+  /api/v1/events/{eventId}:
+    get:
+      operationId: getEventDetail
+      summary: Get event details
+      tags:
+        - Events
+      parameters:
+        - in: path
+          name: eventId
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: dateFrom
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: dateTo
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: occurrenceHistogramInterval
+          schema:
+            type: string
+          required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  event:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      categoryId:
+                        type: string
+                      categoryName:
+                        type: string
+                      totalOccurrence:
+                        type: number
+                      uniqueVisitors:
+                        type: number
+                      newVisitors:
+                        type: number
+                      averageOccurrencePerVisitor:
+                        type: number
+                      occurrenceHistogram:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            date:
+                              type: string
+                            occurrenceCount:
+                              type: number
+                            uniqueVisitorsCount:
+                              type: number
+                          additionalProperties: false
+                      _links:
+                        type: object
+                        properties:
+                          eventVisitors:
+                            type: string
+                        additionalProperties: false
+                    additionalProperties: false
+                additionalProperties: false
+    delete:
+      operationId: deleteEvent
+      summary: Delete event
+      tags:
+        - Events
+      parameters:
+        - in: path
+          name: eventOid
+          schema:
+            type: string
+          required: true
+      responses:
+        '204':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /api/v1/events/{eventId}/visitors:
+    get:
+      operationId: getEventVisitors
+      summary: Get event visitors
+      tags:
+        - Events
+      parameters:
+        - in: path
+          name: eventId
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: dateFrom
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: dateTo
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  visitors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        identification:
+                          type: object
+                          properties:
+                            uid:
+                              type: string
+                            properties:
+                              type: array
+                              items:
+                                $ref: '#/components/schemas/AnyValue'
+                          additionalProperties: false
+                        firstSeen:
+                          type: string
+                        lastSeen:
+                          type: string
+                        numberOfVisits:
+                          type: number
+                        eventMatchedCount:
+                          type: number
+                        _links:
+                          type: object
+                          properties:
+                            visitor:
+                              type: string
+                            visitorSessions:
+                              type: string
+                            visitorEvents:
+                              type: string
+                          additionalProperties: false
+                      additionalProperties: false
+                additionalProperties: false
+  /api/v1/funnels:
+    get:
+      operationId: getFunnelsList
+      summary: Get funnels list
+      tags:
+        - Funnels
+      parameters:
+        - in: query
+          name: before
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: after
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: limit
+          schema:
+            type: number
+          required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: number
+                  funnels:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        events:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              name:
+                                type: string
+                              _links:
+                                type: object
+                                properties:
+                                  event:
+                                    type: string
+                                additionalProperties: false
+                            additionalProperties: false
+                        _links:
+                          type: object
+                          properties:
+                            funnel:
+                              type: string
+                          additionalProperties: false
+                      additionalProperties: false
+                  pagination:
+                    type: object
+                    properties:
+                      before:
+                        type: string
+                      after:
+                        type: string
+                    additionalProperties: false
+                  _links:
+                    type: object
+                    properties:
+                      nextPage:
+                        type: string
+                      previousPage:
+                        type: string
+                    additionalProperties: false
+                additionalProperties: false
+  /api/v1/funnels/{funnelId}:
+    get:
+      operationId: getFunnelDetail
+      summary: Get funnel details
+      tags:
+        - Funnels
+      parameters:
+        - in: path
+          name: funnelId
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: dateFrom
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: dateTo
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: waitForFinish
+          schema:
+            type: boolean
+          required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  computation:
+                    type: object
+                    properties:
+                      isFinished:
+                        type: boolean
+                      finishedProgress:
+                        type: number
+                      nextAttemptDelay:
+                        type: number
+                    additionalProperties: false
+                  funnel:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      createdAt:
+                        type: string
+                      updatedAt:
+                        type: string
+                      conversionRate:
+                        type: number
+                      steps:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            visitorsCount:
+                              type: number
+                            event:
+                              type: object
+                              properties:
+                                step:
+                                  type: number
+                                id:
+                                  type: string
+                                eventName:
+                                  type: string
+                                _links:
+                                  type: object
+                                  properties:
+                                    event:
+                                      type: string
+                                  additionalProperties: false
+                              additionalProperties: false
+                            percentFromPreviousStep:
+                              type: number
+                          additionalProperties: false
+                    additionalProperties: false
+                additionalProperties: false
+  /api/v1/funnels/{funnelId}/visitors/drop-off:
+    get:
+      operationId: getFunnelVisitorsDropOffList
+      summary: Get funnel visitors drop-off list
+      tags:
+        - Funnels
+      parameters:
+        - in: path
+          name: funnelId
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: dateFrom
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: dateTo
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: step
+          schema:
+            type: number
+          required: true
+        - in: query
+          name: success
+          schema:
+            type: boolean
+          required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalVisitorsCount:
+                    type: number
+                  visitors:
+                    type: array
+                    items:
+                      type: string
+                additionalProperties: false
+                required:
+                  - totalVisitorsCount
+  /api/v1/visitors:
+    delete:
+      operationId: deleteVisitors
+      summary: Delete visitors
+      tags:
+        - Visitors
+      parameters:
+        - in: query
+          name: uids
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deletedItems:
+                    type: number
+                additionalProperties: false
+  /api/v1/visitors/{visitorId}:
+    get:
+      operationId: getVisitorDetails
+      summary: Get visitor details
+      tags:
+        - Visitors
+      parameters:
+        - in: path
+          name: visitorId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  visitor:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      identification:
+                        type: object
+                        properties:
+                          uid:
+                            type: string
+                          properties:
+                            type: array
+                            items:
+                              $ref: '#/components/schemas/AnyValue'
+                        additionalProperties: false
+                      firstSeen:
+                        type: string
+                      lastSeen:
+                        type: string
+                      numberOfVisits:
+                        type: number
+                      numberOfSessions:
+                        type: number
+                      numberOfEvents:
+                        type: number
+                      _links:
+                        type: object
+                        properties:
+                          visitorSessions:
+                            type: string
+                          visitorEvents:
+                            type: string
+                        additionalProperties: false
+                    additionalProperties: false
+                additionalProperties: false
+    delete:
+      operationId: deleteVisitor
+      summary: Delete visitor
+      tags:
+        - Visitors
+      parameters:
+        - in: path
+          name: visitorId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deletedItems:
+                    type: number
+                additionalProperties: false
+  /api/v1/visitors/{visitorId}/sessions:
+    get:
+      operationId: getVisitorSessions
+      summary: Get visitor sessions
+      tags:
+        - Visitors
+      parameters:
+        - in: path
+          name: visitorId
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: before
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: after
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: limit
+          schema:
+            type: number
+          required: false
+        - in: query
+          name: sort
+          schema:
+            type: string
+          required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalCount:
+                    type: number
+                  pagination:
+                    type: object
+                    properties:
+                      before:
+                        $ref: '#/components/schemas/AnyValue'
+                      after:
+                        $ref: '#/components/schemas/AnyValue'
+                    additionalProperties: false
+                  sessions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Session'
+                  _links:
+                    type: object
+                    properties:
+                      nextPage:
+                        type: string
+                      previousPage:
+                        type: string
+                    additionalProperties: false
+                additionalProperties: false
+  /api/v1/visitors/{visitorId}/events:
+    get:
+      operationId: getVisitorEvents
+      summary: Get visitor events
+      tags:
+        - Visitors
+      parameters:
+        - in: path
+          name: visitorId
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: dateFrom
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: dateTo
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: eventTypes
+          schema:
+            type: string
+          required: false
+          description: 'What types of events should be returned in the response (values separated by ","): click, url, error, rage_click, custom, focus, text'
+        - in: query
+          name: sessionId
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: before
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: after
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: limit
+          schema:
+            type: number
+          required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pagination:
+                    type: object
+                    properties:
+                      before:
+                        type: string
+                      after:
+                        type: string
+                    additionalProperties: false
+                  events:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        visitorId:
+                          type: string
+                        sessionId:
+                          type: string
+                        properties:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              type:
+                                type: string
+                              value:
+                                type: string
+                            additionalProperties: false
+                        duration:
+                          type: number
+                        startedAt:
+                          type: string
+                        pageUrl:
+                          type: string
+                        type:
+                          type: string
+                        value:
+                          $ref: '#/components/schemas/AnyValue'
+                        sourceType:
+                          type: string
+                        eventName:
+                          type: string
+                        selector:
+                          type: string
+                        _links:
+                          type: object
+                          properties:
+                            visitor:
+                              type: string
+                            eventVisitors:
+                              type: string
+                            event:
+                              type: string
+                          additionalProperties: false
+                      additionalProperties: false
+                  _links:
+                    type: object
+                    properties:
+                      nextPage:
+                        type: string
+                      previousPage:
+                        type: string
+                    additionalProperties: false
+                additionalProperties: false
+  /api/v2/visitors/search:
+    post:
+      operationId: searchVisitors
+      summary: Search visitors
+      tags:
+        - Visitors
+      parameters:
+        - in: query
+          name: after
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: limit
+          schema:
+            type: number
+          required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filters:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      operator:
+                        type: string
+                      value:
+                        oneOf:
+                          - type: number
+                          - type: string
+                          - type: array
+                            items:
+                              type: string
+                    additionalProperties: false
+                    required:
+                      - name
+                      - operator
+                      - value
+                sort:
+                  type: object
+                  properties:
+                    timeCreate:
+                      type: string
+                    timeUpdate:
+                      type: string
+                  additionalProperties: false
+              additionalProperties: false
+              required:
+                - filters
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalVisitorsCount:
+                    type: number
+                  visitors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        identification:
+                          type: object
+                          properties:
+                            uid:
+                              type: string
+                            properties:
+                              type: array
+                              items:
+                                $ref: '#/components/schemas/AnyValue'
+                          additionalProperties: false
+                        firstSeen:
+                          type: string
+                        lastSeen:
+                          type: string
+                        _links:
+                          type: object
+                          properties:
+                            visitorSessions:
+                              type: string
+                            visitorEvents:
+                              type: string
+                          additionalProperties: false
+                      additionalProperties: false
+                  pagination:
+                    type: object
+                    properties:
+                      after:
+                        $ref: '#/components/schemas/AnyValue'
+                    additionalProperties: false
+                  _links:
+                    type: object
+                    properties:
+                      nextPage:
+                        type: string
+                    additionalProperties: false
+                additionalProperties: false
+  /api/v1/sessions/search:
+    post:
+      operationId: searchSessions
+      summary: Search sessions
+      tags:
+        - Sessions
+      parameters:
+        - in: query
+          name: after
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: limit
+          schema:
+            type: number
+          required: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filters:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      operator:
+                        type: string
+                      value:
+                        oneOf:
+                          - type: number
+                          - type: string
+                          - type: array
+                            items:
+                              type: string
+                    additionalProperties: false
+                    required:
+                      - name
+                      - operator
+                      - value
+                sort:
+                  type: object
+                  properties:
+                    timeStart:
+                      type: string
+                  additionalProperties: false
+              additionalProperties: false
+              required:
+                - filters
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalSessionsCount:
+                    type: number
+                  sessions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Session'
+                  pagination:
+                    type: object
+                    properties:
+                      after:
+                        type: string
+                    additionalProperties: false
+                  _links:
+                    type: object
+                    properties:
+                      nextPage:
+                        type: string
+                    additionalProperties: false
+                additionalProperties: false
+  /api/v1/sessions/{sessionId}:
+    get:
+      operationId: getSessionDetail
+      summary: Get session details
+      tags:
+        - Sessions
+      parameters:
+        - in: path
+          name: sessionId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+  /api/v1/sessions/{sessionId}/public-link:
+    get:
+      operationId: getPublicSession
+      summary: Get session public link
+      tags:
+        - Sessions
+      parameters:
+        - in: path
+          name: sessionId
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  publicLink:
+                    type: string
+                additionalProperties: false
+  /api/v1/statistics:
+    get:
+      operationId: getApiStats
+      summary: Get API stats
+      tags:
+        - System
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  projectUsage:
+                    type: number
+                  endpointsUsage:
+                    type: object
+                    additionalProperties: true
+                additionalProperties: false
+  /api/v1/me:
+    get:
+      operationId: getMe
+      summary: Get info about project
+      tags:
+        - System
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organizationId:
+                    type: string
+                  organizationName:
+                    type: string
+                  projectId:
+                    type: string
+                  projectName:
+                    type: string
+                additionalProperties: false
+  /api/v1/webhooks:
+    get:
+      operationId: getWebhooks
+      summary: Get webhooks
+      tags:
+        - Webhooks
+      parameters: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    url:
+                      type: string
+                    type:
+                      type: string
+                    enabled:
+                      type: boolean
+                  additionalProperties: false
+                  required:
+                    - id
+                    - url
+                    - type
+                    - enabled
+    post:
+      operationId: createWebhook
+      summary: Create webhook
+      tags:
+        - Webhooks
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  type: string
+                url:
+                  type: string
+                source:
+                  type: string
+                secret:
+                  type: string
+              additionalProperties: false
+              required:
+                - type
+                - url
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                additionalProperties: false
+  /api/v1/webhooks/{webhookOid}:
+    get:
+      operationId: getWebhook
+      summary: Get webhook
+      tags:
+        - Webhooks
+      parameters:
+        - in: path
+          name: webhookOid
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  url:
+                    type: string
+                  type:
+                    type: string
+                  enabled:
+                    type: boolean
+                  lastResponse:
+                    type: string
+                  lastResponseAt:
+                    type: string
+                additionalProperties: false
+                required:
+                  - id
+                  - url
+                  - type
+                  - enabled
+    patch:
+      operationId: updateWebhook
+      summary: Update webhook
+      tags:
+        - Webhooks
+      parameters:
+        - in: path
+          name: webhookOid
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                secret:
+                  type: string
+                enabled:
+                  type: boolean
+              additionalProperties: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                additionalProperties: false
+    delete:
+      operationId: deleteWebhook
+      summary: Delete webhook
+      tags:
+        - Webhooks
+      parameters:
+        - in: path
+          name: webhookOid
+          schema:
+            type: string
+          required: true
+      responses:
+        '204':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+  /api/v1/bundles/{bundleId}/platforms/{platform}/releases/{appVersion}/mapping-files:
+    post:
+      operationId: uploadMappingFile
+      summary: Upload mapping files for crash reports
+      tags:
+        - mappingFiles
+      parameters:
+        - in: path
+          name: bundleId
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: platform
+          schema:
+            type: string
+          required: true
+        - in: path
+          name: appVersion
+          schema:
+            type: string
+          required: true
+        - in: query
+          name: force
+          schema:
+            type: string
+          required: false
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  oid:
+                    type: string
+                  createdAt:
+                    type: string
+                  state:
+                    type: string
+                additionalProperties: false
+                required:
+                  - oid
+                  - createdAt
+                  - state
+components:
+  schemas:
+    AnyValue:
+      description: Can be any value - string, number, boolean, array or object.
+      nullable: true
+    Session:
+      type: object
+      properties:
+        id:
+          type: string
+        visitorId:
+          type: string
+        identification:
+          type: object
+          properties:
+            uid:
+              type: string
+            properties:
+              $ref: '#/components/schemas/AnyValue'
+            visitorIp:
+              type: string
+            browser:
+              type: object
+              properties:
+                name:
+                  type: string
+                code:
+                  type: string
+                userAgent:
+                  type: string
+              additionalProperties: false
+            platform:
+              type: object
+              properties:
+                name:
+                  type: string
+                operatingSystem:
+                  type: string
+                code:
+                  type: string
+              additionalProperties: false
+            country:
+              type: object
+              properties:
+                name:
+                  type: string
+                code:
+                  type: string
+                region:
+                  type: string
+                city:
+                  type: string
+              additionalProperties: false
+            device:
+              type: object
+              properties:
+                type:
+                  type: string
+                orientation:
+                  type: string
+                width:
+                  type: number
+                height:
+                  type: number
+              additionalProperties: false
+          additionalProperties: false
+        duration:
+          type: number
+        startedAt:
+          type: string
+        endedAt:
+          type: string
+        referrer:
+          type: string
+        landingPage:
+          type: string
+        exitPage:
+          type: string
+        pageUrl:
+          type: array
+          items:
+            type: string
+        notes:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              time:
+                type: number
+              text:
+                type: string
+            additionalProperties: false
+        domain:
+          type: string
+        protocol:
+          type: string
+        dashboardURL:
+          type: string
+        _links:
+          type: object
+          properties:
+            visitor:
+              type: string
+            sessionEvents:
+              type: string
+          additionalProperties: false
+      additionalProperties: false
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

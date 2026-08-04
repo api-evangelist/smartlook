@@ -1,0 +1,26 @@
+{
+  "provider": "smartlook",
+  "sources": [
+    "smartlook-events-api-openapi.yml",
+    "smartlook-funnels-api-openapi.yml",
+    "smartlook-mappingfiles-api-openapi.yml",
+    "smartlook-sessions-api-openapi.yml",
+    "smartlook-system-api-openapi.yml",
+    "smartlook-visitors-api-openapi.yml",
+    "smartlook-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "smartlook-events-api-openapi.yml",
+    "smartlook-funnels-api-openapi.yml",
+    "smartlook-mappingfiles-api-openapi.yml",
+    "smartlook-sessions-api-openapi.yml",
+    "smartlook-system-api-openapi.yml",
+    "smartlook-visitors-api-openapi.yml",
+    "smartlook-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
