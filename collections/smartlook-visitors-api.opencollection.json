@@ -1,0 +1,197 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Smartlook REST Events Visitors API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Visitors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete visitors",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.eu.smartlook.cloud/api/v1/visitors",
+            "params": [
+              {
+                "name": "uids",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete visitors"
+        },
+        {
+          "info": {
+            "name": "Get visitor details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eu.smartlook.cloud/api/v1/visitors/:visitorId",
+            "params": [
+              {
+                "name": "visitorId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get visitor details"
+        },
+        {
+          "info": {
+            "name": "Delete visitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.eu.smartlook.cloud/api/v1/visitors/:visitorId",
+            "params": [
+              {
+                "name": "visitorId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete visitor"
+        },
+        {
+          "info": {
+            "name": "Get visitor sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eu.smartlook.cloud/api/v1/visitors/:visitorId/sessions",
+            "params": [
+              {
+                "name": "visitorId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get visitor sessions"
+        },
+        {
+          "info": {
+            "name": "Get visitor events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eu.smartlook.cloud/api/v1/visitors/:visitorId/events",
+            "params": [
+              {
+                "name": "visitorId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dateFrom",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "dateTo",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "eventTypes",
+                "value": "",
+                "type": "query",
+                "description": "What types of events should be returned in the response (values separated by \",\"): click, url, error, rage_click, custom, focus, text"
+              },
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get visitor events"
+        },
+        {
+          "info": {
+            "name": "Search visitors",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.eu.smartlook.cloud/api/v2/visitors/search",
+            "params": [
+              {
+                "name": "after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search visitors"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

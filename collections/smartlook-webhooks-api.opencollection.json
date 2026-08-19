@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Smartlook REST Events Webhooks API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eu.smartlook.cloud/api/v1/webhooks"
+          },
+          "docs": "Get webhooks"
+        },
+        {
+          "info": {
+            "name": "Create webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.eu.smartlook.cloud/api/v1/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create webhook"
+        },
+        {
+          "info": {
+            "name": "Get webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eu.smartlook.cloud/api/v1/webhooks/:webhookOid",
+            "params": [
+              {
+                "name": "webhookOid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get webhook"
+        },
+        {
+          "info": {
+            "name": "Update webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.eu.smartlook.cloud/api/v1/webhooks/:webhookOid",
+            "params": [
+              {
+                "name": "webhookOid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update webhook"
+        },
+        {
+          "info": {
+            "name": "Delete webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.eu.smartlook.cloud/api/v1/webhooks/:webhookOid",
+            "params": [
+              {
+                "name": "webhookOid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete webhook"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

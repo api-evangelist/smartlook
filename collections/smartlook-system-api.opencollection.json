@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Smartlook REST Events System API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "System",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get API stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eu.smartlook.cloud/api/v1/statistics"
+          },
+          "docs": "Get API stats"
+        },
+        {
+          "info": {
+            "name": "Get info about project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eu.smartlook.cloud/api/v1/me"
+          },
+          "docs": "Get info about project"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,420 @@
+{
+  "item": [
+    {
+      "id": "65d2c05e-c373-4143-bdfe-1a9e96ba3c31",
+      "name": "Funnels",
+      "description": {
+        "content": "Manage and query funnel analysis data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6bdce235-feb2-4b41-a07c-650a52b88f47",
+          "name": "Get funnels list",
+          "request": {
+            "name": "Get funnels list",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "funnels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "before",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6810d2ad-fb01-48d6-904e-9f7448c8c770",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "funnels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalCount\": 7032.734305577914,\n  \"funnels\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"events\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"_links\": {\n            \"event\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"_links\": {\n            \"event\": \"string\"\n          }\n        }\n      ],\n      \"_links\": {\n        \"funnel\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"events\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"_links\": {\n            \"event\": \"string\"\n          }\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"_links\": {\n            \"event\": \"string\"\n          }\n        }\n      ],\n      \"_links\": {\n        \"funnel\": \"string\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"before\": \"string\",\n    \"after\": \"string\"\n  },\n  \"_links\": {\n    \"nextPage\": \"string\",\n    \"previousPage\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3daedaca-0d48-4ee2-b7f4-aa6b6dfccec2",
+          "name": "Get funnel details",
+          "request": {
+            "name": "Get funnel details",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "funnels",
+                ":funnelId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dateFrom",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "dateTo",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "waitForFinish",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "funnelId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3cf831a1-48ab-40aa-9acc-b723ca88415c",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "funnels",
+                    ":funnelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dateFrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateTo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "waitForFinish",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "funnelId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"computation\": {\n    \"isFinished\": false,\n    \"finishedProgress\": 7283.234042369415,\n    \"nextAttemptDelay\": 3816.268236692376\n  },\n  \"funnel\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"createdAt\": \"string\",\n    \"updatedAt\": \"string\",\n    \"conversionRate\": 8476.33627393001,\n    \"steps\": [\n      {\n        \"visitorsCount\": 4351.354592464228,\n        \"event\": {\n          \"step\": 6442.121367504896,\n          \"id\": \"string\",\n          \"eventName\": \"string\",\n          \"_links\": {\n            \"event\": \"string\"\n          }\n        },\n        \"percentFromPreviousStep\": 9910.622428557188\n      },\n      {\n        \"visitorsCount\": 988.1799956628978,\n        \"event\": {\n          \"step\": 1526.4229114065297,\n          \"id\": \"string\",\n          \"eventName\": \"string\",\n          \"_links\": {\n            \"event\": \"string\"\n          }\n        },\n        \"percentFromPreviousStep\": 4186.737486709771\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8874d749-75b5-43d6-8465-4eea3cc38c7d",
+          "name": "Get funnel visitors drop-off list",
+          "request": {
+            "name": "Get funnel visitors drop-off list",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "funnels",
+                ":funnelId",
+                "visitors",
+                "drop-off"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dateFrom",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "dateTo",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "step",
+                  "value": "<number>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "success",
+                  "value": "<boolean>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "funnelId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f2afa369-c54b-45ef-8a25-26bc163d609b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "funnels",
+                    ":funnelId",
+                    "visitors",
+                    "drop-off"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dateFrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateTo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "step",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "success",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "funnelId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalVisitorsCount\": 4651.12272355388,\n  \"visitors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.eu.smartlook.cloud/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5d406a6a-e436-4b53-bff2-ff85343885c8",
+    "name": "Smartlook REST Events Funnels API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Smartlook REST API provides programmatic access to product analytics data including visitors, events, funnels, and session recordings. It supports bearer token authentication, cursor-based pagination, and regional endpoints to comply with data residency requirements.\n",
+      "type": "text/plain"
+    }
+  }
+}

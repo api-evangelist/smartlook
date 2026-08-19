@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Smartlook REST Events API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get events list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eu.smartlook.cloud/api/v1/events",
+            "params": [
+              {
+                "name": "before",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "categoryId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get events list"
+        },
+        {
+          "info": {
+            "name": "Get event details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eu.smartlook.cloud/api/v1/events/:eventId",
+            "params": [
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dateFrom",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "dateTo",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "occurrenceHistogramInterval",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get event details"
+        },
+        {
+          "info": {
+            "name": "Delete event",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.eu.smartlook.cloud/api/v1/events/:eventId",
+            "params": [
+              {
+                "name": "eventOid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete event"
+        },
+        {
+          "info": {
+            "name": "Get event visitors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eu.smartlook.cloud/api/v1/events/:eventId/visitors",
+            "params": [
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dateFrom",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "dateTo",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get event visitors"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

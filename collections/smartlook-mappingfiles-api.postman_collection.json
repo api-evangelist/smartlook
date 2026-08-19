@@ -1,0 +1,187 @@
+{
+  "item": [
+    {
+      "id": "808fbaa9-c579-4896-9c0c-2fe7697a6784",
+      "name": "mappingFiles",
+      "description": {
+        "content": "Upload mapping files for crash reports",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1e03bebf-ae59-4d5c-9116-3c044e3fb643",
+          "name": "Upload mapping files for crash reports",
+          "request": {
+            "name": "Upload mapping files for crash reports",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "bundles",
+                ":bundleId",
+                "platforms",
+                ":platform",
+                "releases",
+                ":appVersion",
+                "mapping-files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "force",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "bundleId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "platform",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "appVersion",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ffc74d04-4d34-4230-a114-c05530c375d2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "bundles",
+                    ":bundleId",
+                    "platforms",
+                    ":platform",
+                    "releases",
+                    ":appVersion",
+                    "mapping-files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "force",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "bundleId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "platform",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "appVersion",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"oid\": \"string\",\n  \"createdAt\": \"string\",\n  \"state\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.eu.smartlook.cloud/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "744615bd-f7bd-4cef-876f-c5863a3282ed",
+    "name": "Smartlook REST Events mappingFiles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Smartlook REST API provides programmatic access to product analytics data including visitors, events, funnels, and session recordings. It supports bearer token authentication, cursor-based pagination, and regional endpoints to comply with data residency requirements.\n",
+      "type": "text/plain"
+    }
+  }
+}

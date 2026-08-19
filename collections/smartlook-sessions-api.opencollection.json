@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Smartlook REST Events Sessions API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.eu.smartlook.cloud/api/v1/sessions/search",
+            "params": [
+              {
+                "name": "after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search sessions"
+        },
+        {
+          "info": {
+            "name": "Get session details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eu.smartlook.cloud/api/v1/sessions/:sessionId",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get session details"
+        },
+        {
+          "info": {
+            "name": "Get session public link",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eu.smartlook.cloud/api/v1/sessions/:sessionId/public-link",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get session public link"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

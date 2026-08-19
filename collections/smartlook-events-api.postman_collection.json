@@ -1,0 +1,504 @@
+{
+  "item": [
+    {
+      "id": "e4390181-2cbd-4fc3-965c-41303333a509",
+      "name": "Events",
+      "description": {
+        "content": "Manage and query analytics events",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6a56ddbf-3677-49c7-b137-ea9f5b362cae",
+          "name": "Get events list",
+          "request": {
+            "name": "Get events list",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "before",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "categoryId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "963a34d3-369e-431b-ae6b-3b6cd192467f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "categoryId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"events\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"categoryId\": \"string\",\n      \"categoryName\": \"string\",\n      \"_links\": {\n        \"eventVisitors\": \"string\",\n        \"event\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"categoryId\": \"string\",\n      \"categoryName\": \"string\",\n      \"_links\": {\n        \"eventVisitors\": \"string\",\n        \"event\": \"string\"\n      }\n    }\n  ],\n  \"totalCount\": 2404.4255387688418,\n  \"pagination\": {\n    \"before\": \"string\",\n    \"after\": \"string\"\n  },\n  \"_links\": {\n    \"nextPage\": \"string\",\n    \"previousPage\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "750a07c2-9e82-45d8-95ce-8ce4b3c0509b",
+          "name": "Get event details",
+          "request": {
+            "name": "Get event details",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "events",
+                ":eventId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dateFrom",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "dateTo",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "occurrenceHistogramInterval",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "eventId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24a01a12-ac5c-4584-9084-1532cb02bcf2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "events",
+                    ":eventId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dateFrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateTo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "occurrenceHistogramInterval",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "eventId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"categoryId\": \"string\",\n    \"categoryName\": \"string\",\n    \"totalOccurrence\": 8108.018148591047,\n    \"uniqueVisitors\": 6159.669974335045,\n    \"newVisitors\": 6392.728912481995,\n    \"averageOccurrencePerVisitor\": 4776.1962736820215,\n    \"occurrenceHistogram\": [\n      {\n        \"date\": \"string\",\n        \"occurrenceCount\": 7752.029109736838,\n        \"uniqueVisitorsCount\": 7451.342349547591\n      },\n      {\n        \"date\": \"string\",\n        \"occurrenceCount\": 6710.567540365085,\n        \"uniqueVisitorsCount\": 3673.3375110285824\n      }\n    ],\n    \"_links\": {\n      \"eventVisitors\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "809a9726-ce4a-40d8-b40c-e1f986418c4c",
+          "name": "Delete event",
+          "request": {
+            "name": "Delete event",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "events",
+                ":eventId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "eventOid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "907881ea-7ec9-414c-a37a-420085c4725f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "events",
+                    ":eventId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "eventOid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 1089.431019992061,\n  \"key_1\": 8964,\n  \"key_2\": 8319.909545755392\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ddaad476-b6d6-49c9-a6ae-2592e127292c",
+          "name": "Get event visitors",
+          "request": {
+            "name": "Get event visitors",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "events",
+                ":eventId",
+                "visitors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dateFrom",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "dateTo",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "eventId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2032b343-4a3c-4738-88f2-2683e65edca7",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "events",
+                    ":eventId",
+                    "visitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dateFrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateTo",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "eventId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"visitors\": [\n    {\n      \"id\": \"string\",\n      \"identification\": {\n        \"uid\": \"string\"\n      },\n      \"firstSeen\": \"string\",\n      \"lastSeen\": \"string\",\n      \"numberOfVisits\": 8042.36820173212,\n      \"eventMatchedCount\": 3922.4749070092103,\n      \"_links\": {\n        \"visitor\": \"string\",\n        \"visitorSessions\": \"string\",\n        \"visitorEvents\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"identification\": {\n        \"uid\": \"string\"\n      },\n      \"firstSeen\": \"string\",\n      \"lastSeen\": \"string\",\n      \"numberOfVisits\": 4209.304420700457,\n      \"eventMatchedCount\": 6217.314033478396,\n      \"_links\": {\n        \"visitor\": \"string\",\n        \"visitorSessions\": \"string\",\n        \"visitorEvents\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.eu.smartlook.cloud/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1ce7bf1a-e0a7-4092-aa19-1662d9865a33",
+    "name": "Smartlook REST Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Smartlook REST API provides programmatic access to product analytics data including visitors, events, funnels, and session recordings. It supports bearer token authentication, cursor-based pagination, and regional endpoints to comply with data residency requirements.\n",
+      "type": "text/plain"
+    }
+  }
+}

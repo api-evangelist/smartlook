@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Smartlook REST Events mappingFiles API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "mappingFiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload mapping files for crash reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.eu.smartlook.cloud/api/v1/bundles/:bundleId/platforms/:platform/releases/:appVersion/mapping-files",
+            "params": [
+              {
+                "name": "bundleId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appVersion",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Upload mapping files for crash reports"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

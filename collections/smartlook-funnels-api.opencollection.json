@@ -1,0 +1,123 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Smartlook REST Events Funnels API",
+    "version": "1.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Funnels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get funnels list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eu.smartlook.cloud/api/v1/funnels",
+            "params": [
+              {
+                "name": "before",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get funnels list"
+        },
+        {
+          "info": {
+            "name": "Get funnel details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eu.smartlook.cloud/api/v1/funnels/:funnelId",
+            "params": [
+              {
+                "name": "funnelId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dateFrom",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "dateTo",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "waitForFinish",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get funnel details"
+        },
+        {
+          "info": {
+            "name": "Get funnel visitors drop-off list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.eu.smartlook.cloud/api/v1/funnels/:funnelId/visitors/drop-off",
+            "params": [
+              {
+                "name": "funnelId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "dateFrom",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "dateTo",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "step",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "success",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get funnel visitors drop-off list"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,359 @@
+{
+  "item": [
+    {
+      "id": "739460b5-ffce-4555-9c06-d2f2778f5d57",
+      "name": "Sessions",
+      "description": {
+        "content": "Search and retrieve session recordings",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8ed04a47-bcbc-4daf-a58a-69809cf6ef5a",
+          "name": "Search sessions",
+          "request": {
+            "name": "Search sessions",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "sessions",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filters\": [\n    {\n      \"name\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    }\n  ],\n  \"sort\": {\n    \"timeStart\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8166fedb-c214-45ea-a509-b88b6f01d67b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sessions",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filters\": [\n    {\n      \"name\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    }\n  ],\n  \"sort\": {\n    \"timeStart\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalSessionsCount\": 1057.2610198749444,\n  \"sessions\": [\n    {\n      \"id\": \"string\",\n      \"visitorId\": \"string\",\n      \"identification\": {\n        \"uid\": \"string\",\n        \"properties\": {},\n        \"visitorIp\": \"string\",\n        \"browser\": {\n          \"name\": \"string\",\n          \"code\": \"string\",\n          \"userAgent\": \"string\"\n        },\n        \"platform\": {\n          \"name\": \"string\",\n          \"operatingSystem\": \"string\",\n          \"code\": \"string\"\n        },\n        \"country\": {\n          \"name\": \"string\",\n          \"code\": \"string\",\n          \"region\": \"string\",\n          \"city\": \"string\"\n        },\n        \"device\": {\n          \"type\": \"string\",\n          \"orientation\": \"string\",\n          \"width\": 7150.343349952099,\n          \"height\": 4443.765228434437\n        }\n      },\n      \"duration\": 8125.667010313118,\n      \"startedAt\": \"string\",\n      \"endedAt\": \"string\",\n      \"referrer\": \"string\",\n      \"landingPage\": \"string\",\n      \"exitPage\": \"string\",\n      \"pageUrl\": [\n        \"string\",\n        \"string\"\n      ],\n      \"notes\": [\n        {\n          \"id\": \"string\",\n          \"time\": 223.3145017373983,\n          \"text\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"time\": 4359.336918891311,\n          \"text\": \"string\"\n        }\n      ],\n      \"domain\": \"string\",\n      \"protocol\": \"string\",\n      \"dashboardURL\": \"string\",\n      \"_links\": {\n        \"visitor\": \"string\",\n        \"sessionEvents\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"visitorId\": \"string\",\n      \"identification\": {\n        \"uid\": \"string\",\n        \"properties\": {},\n        \"visitorIp\": \"string\",\n        \"browser\": {\n          \"name\": \"string\",\n          \"code\": \"string\",\n          \"userAgent\": \"string\"\n        },\n        \"platform\": {\n          \"name\": \"string\",\n          \"operatingSystem\": \"string\",\n          \"code\": \"string\"\n        },\n        \"country\": {\n          \"name\": \"string\",\n          \"code\": \"string\",\n          \"region\": \"string\",\n          \"city\": \"string\"\n        },\n        \"device\": {\n          \"type\": \"string\",\n          \"orientation\": \"string\",\n          \"width\": 2996.009592052028,\n          \"height\": 7005.9153195764575\n        }\n      },\n      \"duration\": 4603.401524642359,\n      \"startedAt\": \"string\",\n      \"endedAt\": \"string\",\n      \"referrer\": \"string\",\n      \"landingPage\": \"string\",\n      \"exitPage\": \"string\",\n      \"pageUrl\": [\n        \"string\",\n        \"string\"\n      ],\n      \"notes\": [\n        {\n          \"id\": \"string\",\n          \"time\": 2850.076075361793,\n          \"text\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"time\": 7703.45145145112,\n          \"text\": \"string\"\n        }\n      ],\n      \"domain\": \"string\",\n      \"protocol\": \"string\",\n      \"dashboardURL\": \"string\",\n      \"_links\": {\n        \"visitor\": \"string\",\n        \"sessionEvents\": \"string\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"after\": \"string\"\n  },\n  \"_links\": {\n    \"nextPage\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b8b8f81-a687-4927-a486-a254d173807e",
+          "name": "Get session details",
+          "request": {
+            "name": "Get session details",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "sessions",
+                ":sessionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sessionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4b32ae57-8e8b-4cd0-a947-175e88d288d8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sessions",
+                    ":sessionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"visitorId\": \"string\",\n  \"identification\": {\n    \"uid\": \"string\",\n    \"properties\": {},\n    \"visitorIp\": \"string\",\n    \"browser\": {\n      \"name\": \"string\",\n      \"code\": \"string\",\n      \"userAgent\": \"string\"\n    },\n    \"platform\": {\n      \"name\": \"string\",\n      \"operatingSystem\": \"string\",\n      \"code\": \"string\"\n    },\n    \"country\": {\n      \"name\": \"string\",\n      \"code\": \"string\",\n      \"region\": \"string\",\n      \"city\": \"string\"\n    },\n    \"device\": {\n      \"type\": \"string\",\n      \"orientation\": \"string\",\n      \"width\": 2644.303144228335,\n      \"height\": 9386.499946016782\n    }\n  },\n  \"duration\": 7423.34398899831,\n  \"startedAt\": \"string\",\n  \"endedAt\": \"string\",\n  \"referrer\": \"string\",\n  \"landingPage\": \"string\",\n  \"exitPage\": \"string\",\n  \"pageUrl\": [\n    \"string\",\n    \"string\"\n  ],\n  \"notes\": [\n    {\n      \"id\": \"string\",\n      \"time\": 2816.549740104346,\n      \"text\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"time\": 7826.329073107501,\n      \"text\": \"string\"\n    }\n  ],\n  \"domain\": \"string\",\n  \"protocol\": \"string\",\n  \"dashboardURL\": \"string\",\n  \"_links\": {\n    \"visitor\": \"string\",\n    \"sessionEvents\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a882594-e9ea-4d67-9101-b02e88837acd",
+          "name": "Get session public link",
+          "request": {
+            "name": "Get session public link",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "sessions",
+                ":sessionId",
+                "public-link"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sessionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d9e97c20-b716-45ac-a808-2a9622aa9e48",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "sessions",
+                    ":sessionId",
+                    "public-link"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"publicLink\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.eu.smartlook.cloud/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8b72b58c-b99f-4f1a-aa8c-bf82329efe59",
+    "name": "Smartlook REST Events Sessions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Smartlook REST API provides programmatic access to product analytics data including visitors, events, funnels, and session recordings. It supports bearer token authentication, cursor-based pagination, and regional endpoints to comply with data residency requirements.\n",
+      "type": "text/plain"
+    }
+  }
+}

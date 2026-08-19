@@ -1,0 +1,750 @@
+{
+  "item": [
+    {
+      "id": "2682bcb5-c9b6-4ca3-b6b5-db0098e3b9e9",
+      "name": "Visitors",
+      "description": {
+        "content": "Manage and query visitor data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "841a76bd-c04a-4fb8-8d78-4be004302c74",
+          "name": "Delete visitors",
+          "request": {
+            "name": "Delete visitors",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "visitors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "uids",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bbcc05e6-58a6-4370-92a0-817680eb1ebc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "visitors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "uids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deletedItems\": 2007.1954370763533\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d57a6f0-1754-4b70-b8ea-507eb31f96b7",
+          "name": "Get visitor details",
+          "request": {
+            "name": "Get visitor details",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "visitors",
+                ":visitorId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "visitorId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0c1c095e-7b8f-4952-8898-c6d3507eebc5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "visitors",
+                    ":visitorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "visitorId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"visitor\": {\n    \"id\": \"string\",\n    \"identification\": {\n      \"uid\": \"string\"\n    },\n    \"firstSeen\": \"string\",\n    \"lastSeen\": \"string\",\n    \"numberOfVisits\": 3903.03936057399,\n    \"numberOfSessions\": 5978.7640231652795,\n    \"numberOfEvents\": 7156.567252708801,\n    \"_links\": {\n      \"visitorSessions\": \"string\",\n      \"visitorEvents\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b393a5e4-e7e0-466c-b29f-99296a4693e8",
+          "name": "Delete visitor",
+          "request": {
+            "name": "Delete visitor",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "visitors",
+                ":visitorId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "visitorId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5de6fe5-5a5d-4b03-85a1-094939b111ba",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "visitors",
+                    ":visitorId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "visitorId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deletedItems\": 2007.1954370763533\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "756944d0-d461-4e7b-a0d1-3236a59ab77b",
+          "name": "Get visitor sessions",
+          "request": {
+            "name": "Get visitor sessions",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "visitors",
+                ":visitorId",
+                "sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "before",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "visitorId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d6b03cc-998c-4b18-b9fb-9cd324b1a6ed",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "visitors",
+                    ":visitorId",
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "visitorId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalCount\": 2470.3846124293495,\n  \"pagination\": {\n    \"before\": {},\n    \"after\": {}\n  },\n  \"sessions\": [\n    {\n      \"id\": \"string\",\n      \"visitorId\": \"string\",\n      \"identification\": {\n        \"uid\": \"string\",\n        \"properties\": {},\n        \"visitorIp\": \"string\",\n        \"browser\": {\n          \"name\": \"string\",\n          \"code\": \"string\",\n          \"userAgent\": \"string\"\n        },\n        \"platform\": {\n          \"name\": \"string\",\n          \"operatingSystem\": \"string\",\n          \"code\": \"string\"\n        },\n        \"country\": {\n          \"name\": \"string\",\n          \"code\": \"string\",\n          \"region\": \"string\",\n          \"city\": \"string\"\n        },\n        \"device\": {\n          \"type\": \"string\",\n          \"orientation\": \"string\",\n          \"width\": 871.7854435418437,\n          \"height\": 7489.033315665119\n        }\n      },\n      \"duration\": 5195.90986570886,\n      \"startedAt\": \"string\",\n      \"endedAt\": \"string\",\n      \"referrer\": \"string\",\n      \"landingPage\": \"string\",\n      \"exitPage\": \"string\",\n      \"pageUrl\": [\n        \"string\",\n        \"string\"\n      ],\n      \"notes\": [\n        {\n          \"id\": \"string\",\n          \"time\": 8178.3889257196115,\n          \"text\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"time\": 1830.646017463121,\n          \"text\": \"string\"\n        }\n      ],\n      \"domain\": \"string\",\n      \"protocol\": \"string\",\n      \"dashboardURL\": \"string\",\n      \"_links\": {\n        \"visitor\": \"string\",\n        \"sessionEvents\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"visitorId\": \"string\",\n      \"identification\": {\n        \"uid\": \"string\",\n        \"properties\": {},\n        \"visitorIp\": \"string\",\n        \"browser\": {\n          \"name\": \"string\",\n          \"code\": \"string\",\n          \"userAgent\": \"string\"\n        },\n        \"platform\": {\n          \"name\": \"string\",\n          \"operatingSystem\": \"string\",\n          \"code\": \"string\"\n        },\n        \"country\": {\n          \"name\": \"string\",\n          \"code\": \"string\",\n          \"region\": \"string\",\n          \"city\": \"string\"\n        },\n        \"device\": {\n          \"type\": \"string\",\n          \"orientation\": \"string\",\n          \"width\": 9834.626895858986,\n          \"height\": 5780.177753243023\n        }\n      },\n      \"duration\": 7065.497793600678,\n      \"startedAt\": \"string\",\n      \"endedAt\": \"string\",\n      \"referrer\": \"string\",\n      \"landingPage\": \"string\",\n      \"exitPage\": \"string\",\n      \"pageUrl\": [\n        \"string\",\n        \"string\"\n      ],\n      \"notes\": [\n        {\n          \"id\": \"string\",\n          \"time\": 5660.034080606425,\n          \"text\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"time\": 7492.729709725081,\n          \"text\": \"string\"\n        }\n      ],\n      \"domain\": \"string\",\n      \"protocol\": \"string\",\n      \"dashboardURL\": \"string\",\n      \"_links\": {\n        \"visitor\": \"string\",\n        \"sessionEvents\": \"string\"\n      }\n    }\n  ],\n  \"_links\": {\n    \"nextPage\": \"string\",\n    \"previousPage\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eed2836d-3c9b-4455-9181-330fe3164a5a",
+          "name": "Get visitor events",
+          "request": {
+            "name": "Get visitor events",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "visitors",
+                ":visitorId",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dateFrom",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "dateTo",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "eventTypes",
+                  "value": "<string>",
+                  "description": "What types of events should be returned in the response (values separated by \",\"): click, url, error, rage_click, custom, focus, text"
+                },
+                {
+                  "disabled": false,
+                  "key": "sessionId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "before",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "visitorId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a8c8cdb-8373-4319-b327-d0e85789f7e5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "visitors",
+                    ":visitorId",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dateFrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dateTo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventTypes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sessionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "before",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "visitorId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pagination\": {\n    \"before\": \"string\",\n    \"after\": \"string\"\n  },\n  \"events\": [\n    {\n      \"id\": \"string\",\n      \"visitorId\": \"string\",\n      \"sessionId\": \"string\",\n      \"properties\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"duration\": 5990.199817709664,\n      \"startedAt\": \"string\",\n      \"pageUrl\": \"string\",\n      \"type\": \"string\",\n      \"value\": {},\n      \"sourceType\": \"string\",\n      \"eventName\": \"string\",\n      \"selector\": \"string\",\n      \"_links\": {\n        \"visitor\": \"string\",\n        \"eventVisitors\": \"string\",\n        \"event\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"visitorId\": \"string\",\n      \"sessionId\": \"string\",\n      \"properties\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\",\n          \"value\": \"string\"\n        }\n      ],\n      \"duration\": 8435.884300881833,\n      \"startedAt\": \"string\",\n      \"pageUrl\": \"string\",\n      \"type\": \"string\",\n      \"value\": {},\n      \"sourceType\": \"string\",\n      \"eventName\": \"string\",\n      \"selector\": \"string\",\n      \"_links\": {\n        \"visitor\": \"string\",\n        \"eventVisitors\": \"string\",\n        \"event\": \"string\"\n      }\n    }\n  ],\n  \"_links\": {\n    \"nextPage\": \"string\",\n    \"previousPage\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "501d017a-dea2-464a-bdc1-44b20a462f4c",
+          "name": "Search visitors",
+          "request": {
+            "name": "Search visitors",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v2",
+                "visitors",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<number>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filters\": [\n    {\n      \"name\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    }\n  ],\n  \"sort\": {\n    \"timeCreate\": \"<string>\",\n    \"timeUpdate\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "04b1494e-087c-407a-bc34-7417d608fe51",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v2",
+                    "visitors",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filters\": [\n    {\n      \"name\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"operator\": \"<string>\",\n      \"value\": \"<number>\"\n    }\n  ],\n  \"sort\": {\n    \"timeCreate\": \"<string>\",\n    \"timeUpdate\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalVisitorsCount\": 9925.215744031962,\n  \"visitors\": [\n    {\n      \"id\": \"string\",\n      \"identification\": {\n        \"uid\": \"string\"\n      },\n      \"firstSeen\": \"string\",\n      \"lastSeen\": \"string\",\n      \"_links\": {\n        \"visitorSessions\": \"string\",\n        \"visitorEvents\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"identification\": {\n        \"uid\": \"string\"\n      },\n      \"firstSeen\": \"string\",\n      \"lastSeen\": \"string\",\n      \"_links\": {\n        \"visitorSessions\": \"string\",\n        \"visitorEvents\": \"string\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"after\": {}\n  },\n  \"_links\": {\n    \"nextPage\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.eu.smartlook.cloud/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7d4dba22-96f5-4d1a-8172-f2a4342b4964",
+    "name": "Smartlook REST Events Visitors API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Smartlook REST API provides programmatic access to product analytics data including visitors, events, funnels, and session recordings. It supports bearer token authentication, cursor-based pagination, and regional endpoints to comply with data residency requirements.\n",
+      "type": "text/plain"
+    }
+  }
+}
