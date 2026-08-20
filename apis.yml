@@ -45,6 +45,8 @@ apis:
   humanURL: https://integrations.smartlook.com/docs/api-overview
   baseURL: https://api.eu.smartlook.cloud
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -68,7 +70,8 @@ apis:
   description: Upload mapping files for crash reports
   humanURL: https://integrations.smartlook.com/docs/api-overview
   baseURL: https://api.eu.smartlook.cloud
-  tags:
+  tags: []
+  tags_raw:
   - mappingFiles
   properties:
   - type: OpenAPI
@@ -117,6 +120,8 @@ apis:
   humanURL: https://integrations.smartlook.com/docs/api-overview
   baseURL: https://api.eu.smartlook.cloud
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
