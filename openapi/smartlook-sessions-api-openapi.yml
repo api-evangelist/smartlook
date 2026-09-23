@@ -1,10 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Smartlook REST Events Sessions API
+  title: Smartlook REST Sessions API
   version: 1.0.1
-  description: 'The Smartlook REST API provides programmatic access to product analytics data including visitors, events, funnels, and session recordings. It supports bearer token authentication, cursor-based pagination, and regional endpoints to comply with data residency requirements.
-
-    '
+  description: The Smartlook REST API provides programmatic access to product analytics data including visitors, events, funnels, and session recordings. It supports bearer token authentication, cursor-based pagination, and regional endpoints to comply with data residency requirements.
   contact:
     url: https://integrations.smartlook.com/docs/api-overview
   x-api-id: smartlook-rest-api
@@ -249,7 +247,6 @@ components:
       additionalProperties: false
     AnyValue:
       description: Can be any value - string, number, boolean, array or object.
-      nullable: true
   securitySchemes:
     bearerAuth:
       type: http
