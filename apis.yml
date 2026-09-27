@@ -79,7 +79,7 @@ apis:
   - type: Documentation
     url: https://integrations.smartlook.com/docs/api-overview
 - aid: smartlook:smartlook-mappingfiles-api
-  name: Smartlook mappingFiles API
+  name: Smartlook Mapping Files API
   description: Upload mapping files for crash reports
   humanURL: https://integrations.smartlook.com/docs/api-overview
   baseURL: https://api.eu.smartlook.cloud
