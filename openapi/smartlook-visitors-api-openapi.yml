@@ -413,6 +413,8 @@ paths:
                 additionalProperties: false
 components:
   schemas:
+    AnyValue:
+      description: Can be any value - string, number, boolean, array or object.
     Session:
       type: object
       properties:
@@ -517,8 +519,6 @@ components:
               type: string
           additionalProperties: false
       additionalProperties: false
-    AnyValue:
-      description: Can be any value - string, number, boolean, array or object.
   securitySchemes:
     bearerAuth:
       type: http
