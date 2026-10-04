@@ -1,0 +1,56 @@
+slug: smartlook
+provider: Smartlook
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Funnels
+  spec_file: smartlook-funnels-api-openapi.yml
+  capability_id: BC-4280.30
+  capability_id_l1: BC-4280
+  capability_name: Product Usage Analytics
+  confidence: 0.88
+  evidence: GET /api/v1/funnels/{funnelId}/visitors/drop-off — "Get funnel visitors drop-off list"
+  reason: Funnel definitions and drop-off analysis of product users matches Product Usage Analytics, which
+    explicitly covers "funnels, retention cohorts, and feature engagement".
+- tag: Events
+  spec_file: smartlook-events-api-openapi.yml
+  capability_id: BC-4280
+  capability_id_l1: BC-4280
+  capability_name: Product Telemetry & Experimentation Management
+  confidence: 0.85
+  evidence: 'GET /api/v1/events — "Get events list"; GET /api/v1/events/{eventId}/visitors — "Get event
+    visitors"; description: "programmatic access to product analytics data including visitors, events,
+    funnels"'
+  reason: Manages and queries product usage event definitions and the visitors who triggered them — product
+    telemetry/usage analytics. Clearly BC-4280 at L1, but the operations straddle event instrumentation
+    definition and usage analysis, so no L2 is asserted.
+- tag: Visitors
+  spec_file: smartlook-visitors-api-openapi.yml
+  capability_id: BC-4280.30
+  capability_id_l1: BC-4280
+  capability_name: Product Usage Analytics
+  confidence: 0.8
+  evidence: GET /api/v1/visitors/{visitorId}/events  Get visitor events; vendor is a 'product analytics
+    and session recording platform'
+  reason: Visitor-level session and event retrieval for product usage analysis maps to Product Usage Analytics
+    under Product Telemetry & Experimentation Management.
+- tag: Sessions
+  spec_file: smartlook-sessions-api-openapi.yml
+  capability_id: BC-4280.30
+  capability_id_l1: BC-4280
+  capability_name: Product Usage Analytics
+  confidence: 0.7
+  evidence: POST /api/v1/sessions/search — "Search sessions"; "programmatic access to ... session recordings"
+  reason: Session replay search and retrieval is analysis of captured product usage behaviour, so L1 product
+    telemetry is solid; the L2 assignment to usage analytics is reasonable but session replay also carries
+    qualitative-insight characteristics, hence moderate confidence.

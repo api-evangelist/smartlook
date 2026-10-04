@@ -142,6 +142,9 @@ apis:
   - type: Documentation
     url: https://integrations.smartlook.com/docs/api-overview
 common:
+  - type: CapabilityMap
+    url: capabilities/smartlook-capability-edges.yml
+    name: Smartlook Business Capability Map
   - type: AgenticAccess
     url: agentic-access/smartlook-agentic-access.yml
   - type: DomainSecurity
