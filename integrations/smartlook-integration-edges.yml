@@ -68,9 +68,27 @@ edges:
   detected: '2026-10-20'
   detected_by: mirror-platform-listings.py
   category: Reporting and Analytics
+- partner_name: Intercom (own)
+  partner: intercom
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.intercom.com/app-store/?app_package_code=smartlook
+  mirror_of: intercom/integrations/intercom-integration-edges.yml
+  apps:
+  - Smartlook
+  listing_count: 1
+  detected: '2026-10-23'
+  detected_by: mirror-platform-listings.py
+  category: Analytics
 method: searched
 checked:
 - https://www.twilio.com/docs/segment/connections/destinations/catalog/smartlook
 - https://zapier.com/api/v4/apps/
 - zendesk/integrations/zendesk-integration-edges.yml
+- intercom/integrations/intercom-integration-edges.yml
 source: https://www.twilio.com/docs/segment/connections/destinations/catalog/smartlook
