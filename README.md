@@ -1,4 +1,4 @@
-# Smartlook (smartlook)
+# Smartlook
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,66 +66,140 @@
 
 Smartlook is a product analytics and session recording platform that helps businesses understand how users interact with their web and mobile applications. The platform offers a REST API for programmatically accessing session replays, heatmaps, funnel analysis, event analytics, and visitor behavior insights. Developers can retrieve data across four primary resources—Visitors, Events, Funnels, and Sessions—using bearer token authentication against regional API endpoints. Smartlook supports multiple data regions and provides SDK integrations for web, iOS, Android, and cross-platform frameworks including Cordova and React Native.
 
-- APIs.json: https://raw.githubusercontent.com/api-evangelist/smartlook/refs/heads/main/apis.yml
-- Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=smartlook-api-evangelist&utm_content=repo
+**Areas:** Product Analytics · Session Recording · Heatmaps · Funnels · User Behavior · Event Tracking · Visitor Analytics · Digital Experience
 
-## Tags
+## Smartlook on APIs.io
 
-- Product Analytics
-- Session Recording
-- Heatmaps
-- Funnels
-- User Behavior
-- Event Tracking
-- Visitor Analytics
-- Digital Experience
+Everything profiled for Smartlook is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/smartlook/](https://apis.io/providers/smartlook/)** — or go straight to one of the APIs or properties below.
 
-## APIs
+### APIs (7)
 
-| Name | Description | Docs |
-|------|-------------|------|
-| Smartlook REST API | Access visitors, events, funnels, and session recordings programmatically | [Documentation](https://integrations.smartlook.com/docs/api-overview) |
+- [Smartlook Events API](https://apis.io/apis/smartlook/smartlook-events-api/) — Manage and query analytics events
+- [Smartlook Funnels API](https://apis.io/apis/smartlook/smartlook-funnels-api/) — Manage and query funnel analysis data
+- [Smartlook Mapping Files API](https://apis.io/apis/smartlook/smartlook-mappingfiles-api/) — Upload mapping files for crash reports
+- [Smartlook Sessions API](https://apis.io/apis/smartlook/smartlook-sessions-api/) — Search and retrieve session recordings
+- [Smartlook System API](https://apis.io/apis/smartlook/smartlook-system-api/) — API stats and project information
+- [Smartlook Visitors API](https://apis.io/apis/smartlook/smartlook-visitors-api/) — Manage and query visitor data
+- [Smartlook Webhooks API](https://apis.io/apis/smartlook/smartlook-webhooks-api/) — Create and manage webhooks
 
-## Plans, Rate Limits, and FinOps
+### Published properties
 
-| Resource | File |
-|----------|------|
-| Plans & Pricing | [plans/smartlook-plans-pricing.yml](plans/smartlook-plans-pricing.yml) |
-| Rate Limits | [rate-limits/smartlook-rate-limits.yml](rate-limits/smartlook-rate-limits.yml) |
-| FinOps | [finops/smartlook-finops.yml](finops/smartlook-finops.yml) |
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-**Rate Limits:**
-- Free plan: 20 requests/hour
-- Paid plans: 100 requests/hour
-- REST API add-on: 1,000 requests/hour
+#### Agentic access (1)
 
-**Pricing Tiers:**
-- Free: 3,000 sessions/month, 30-day retention — $0/month
-- Pro: 10,000 sessions/month, 90-day retention — $55/month
-- Business: 100,000 sessions/month, 180-day retention — $191/month
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Timestamps
+- [Smartlook Agentic Access](https://apis.io/agentic-access/smartlook/smartlook-agentic-access/)
 
-| Field | Value |
-|-------|-------|
-| Created | 2026-06-13 |
-| Modified | 2026-06-13 |
+#### JSON-LD (1)
 
-## Common
+Linked-data contexts for the provider's vocabulary.
 
-| Type | URL |
-|------|-----|
-| Website | https://www.smartlook.com/ |
-| Documentation | https://help.smartlook.com/docs/rest-api |
-| GitHub Org | https://github.com/smartlook |
-| LinkedIn | https://www.linkedin.com/company/smartlook |
-| Blog | https://www.smartlook.com/blog/ |
-| Pricing | https://www.smartlook.com/pricing/ |
-| Status Page | https://smartlook.statuspage.io/ |
-| X (Twitter) | https://twitter.com/getsmartlook |
+- [Smartlook Context](https://apis.io/jsonld/smartlook/smartlook-context/)
 
-## Maintainers
+#### Vocabulary (1)
 
-| Name | Email |
-|------|-------|
-| Kin Lane | kin@apievangelist.com |
+The provider's domain terms, defined.
+
+- [Smartlook API Vocabulary](https://apis.io/vocabularies/smartlook/smartlook-vocabulary/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [Smartlook REST Events API](https://apis.io/collections/smartlook/open-smartlook-events-api/)
+- [Smartlook REST Events Funnels API](https://apis.io/collections/smartlook/open-smartlook-funnels-api/)
+- [Smartlook REST Events mappingFiles API](https://apis.io/collections/smartlook/open-smartlook-mappingfiles-api/)
+- [Smartlook REST Events Sessions API](https://apis.io/collections/smartlook/open-smartlook-sessions-api/)
+- [Smartlook REST Events System API](https://apis.io/collections/smartlook/open-smartlook-system-api/)
+- [Smartlook REST Events Visitors API](https://apis.io/collections/smartlook/open-smartlook-visitors-api/)
+- [Smartlook REST Events Webhooks API](https://apis.io/collections/smartlook/open-smartlook-webhooks-api/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Smartlook Authentication](https://apis.io/security/smartlook/smartlook-authentication/)
+- [Smartlook Domain Security](https://apis.io/security/smartlook/smartlook-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Smartlook Plans Pricing](https://apis.io/plans/smartlook/smartlook-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Smartlook Rate Limits](https://apis.io/rate-limits/smartlook/smartlook-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Smartlook Finops](https://apis.io/finops/smartlook/smartlook-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.smartlook.com/)
+- [Documentation](https://help.smartlook.com/docs/rest-api)
+- [Pricing](https://www.smartlook.com/pricing/)
+- [Blog](https://www.smartlook.com/blog/)
+- [Status](https://smartlook.statuspage.io/)
+
+## API Evangelist rating
+
+**Kin Score 29.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 55.0 |
+| Contract governance | 13.6 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 16.7 |
+| Access clarity | 7.9 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/smartlook/](https://apis.io/providers/smartlook/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Smartlook: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/smartlook/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
